@@ -1,7 +1,8 @@
 
 function Header(){
 
-    return (<header className="header">
+    return (
+    <header className="header">
         <div className="container">
             <div className="header__block">
                 <div className="header__logo _show _light">
