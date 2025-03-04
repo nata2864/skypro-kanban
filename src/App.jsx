@@ -1,9 +1,9 @@
 import "./App.css";
 import Header from "./components/Header/Header";
-import PopNewCard from "./components/PopNewCard/PopNewCard";
-import PopBrowse from "./components/PopBrowse/PopBrowse";
+import PopNewCard from "./components/PopUps/PopNewCard/PopNewCard";
+import PopBrowse from "./components/PopUps/PopBrowse/PopBrowse";
 import Main from "./components/Main/Main";
-import PopExit from "./components/PopExit/PopExit";
+import PopExit from "./components/PopUps/PopExit/PopExit";
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
         <PopExit />
         <PopNewCard />
         <PopBrowse />
-        <Header/>
+        <Header />
         <Main />
       </div>
 
