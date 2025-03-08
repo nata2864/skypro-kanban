@@ -1,40 +1,64 @@
 import { useState } from "react";
-function Header(){
-    const [isOpen, setIsOpen] = useState(false);
-    function togglePopup() {
-        setIsOpen(!isOpen);
-      }
-    return (
-    <header className="header">
-        <div className="container">
-            <div className="header__block">
-                <div className="header__logo _show _light">
-                    <a href="" target="_self"><img src="images/logo.png" alt="logo"/></a>
-                </div>
-                <div className="header__logo _dark">
-                    <a href="" target="_self"><img src="images/logo_dark.png" alt="logo"/></a>
-                </div>
-                <nav className="header__nav">
-                    <button className="header__btn-main-new _hover01" id="btnMainNew"><a href="#popNewCard">Создать новую задачу</a></button>
-                    {/* <a href="#user-set-target" className="header_user _hover02">Ivan Ivanov</a> */}
-                    <button className="button_user" onClick={togglePopup}>Ivan Ivanov</button>
-                   
-                    <div className="header__pop-user-set pop-user-set" id="user-set-target"  style = {{display: isOpen?'block':'none'}}>
-                
-      
-                        <p className="pop-user-set__name">Ivan Ivanov</p>
-                        <p className="pop-user-set__mail">ivan.ivanov@gmail.com</p>
-                        <div className="pop-user-set__theme">
-                            <p>Темная тема</p>
-                            <input type="checkbox" className="checkbox" name="checkbox"/>
-                        </div>
-                        <button type="button" className="_hover03"><a href="#popExit">Выйти</a></button>
-                    </div>
-                </nav>					
-            </div>
-        </div>			
-    </header>)
-}
+import PopNewCard from "../PopUps/PopNewCard/PopNewCard";
+import PopUserSet from "../PopUps/PopUserSet";
 
+function Header() {
+  const [isOpenPopUser, setIsOpenPopUser] = useState(false);
+  const [isOpenPopCard, setIsOpenPopCard] = useState(false);
+  function togglePopupUser() {
+    setIsOpenPopUser(!isOpenPopUser);
+  }
+  function togglePopupCard() {
+    setIsOpenPopCard(!isOpenPopCard);
+  }
+
+  return (
+    <header className="header">
+      <div className="container">
+        <div className="header__block">
+          <div className="header__logo _show _light">
+            <a href="" target="_self">
+              {/* Найти правельный путь и лучше прописать альт */}
+              {/* <img src="images/logo.png" alt="logo" /> */}
+              <img src="../public/images/logo.png" alt="logo" />
+            </a>
+          </div>
+          <div className="header__logo _dark">
+            <a href="" target="_self">
+              <img src="images/logo_dark.png" alt="logo" />
+            </a>
+          </div>
+          <nav className="header__nav">
+            <button
+              className="header__btn-main-new _hover01"
+              id="btnMainNew"
+              onClick={togglePopupCard}
+            >
+              Создать новую задачу
+            </button>
+
+            <div
+              className={`pop-new-card ${isOpenPopCard ? "visible" : ""}`}
+              id="popNewCard"
+            >
+              <PopNewCard />
+            </div>
+
+            <button className="button_user" onClick={togglePopupUser}>
+              Ivan Ivanov
+            </button>
+            <div
+              className="header__pop-user-set pop-user-set"
+              id="user-set-target"
+              style={{ display: isOpenPopUser ? "block" : "none" }}
+            >
+              <PopUserSet />
+            </div>
+          </nav>
+        </div>
+      </div>
+    </header>
+  );
+}
 
 export default Header;

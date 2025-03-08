@@ -1,8 +1,8 @@
-import Calendar from "../../Calendar/Calendar";
 
-function PopNewCard() {
+
+function PopNewCard2() {
   return (
-  
+   
       <div className="pop-new-card__container">
         <div className="pop-new-card__block">
           <div className="pop-new-card__content">
@@ -42,7 +42,7 @@ function PopNewCard() {
                   />
                 </div>
               </form>
-              <Calendar />
+        
             </div>
             <div className="pop-new-card__categories categories">
               <p className="categories__p subttl">Категория</p>
@@ -64,8 +64,8 @@ function PopNewCard() {
           </div>
         </div>
       </div>
-    
+  
   );
 }
 
-export default PopNewCard;
+export default PopNewCard2;

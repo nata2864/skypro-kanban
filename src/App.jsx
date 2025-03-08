@@ -10,7 +10,6 @@ function App() {
     <div>
       <div className="wrapper">
         <PopExit />
-        <PopNewCard />
         <PopBrowse />
         <Header />
         <Main />
