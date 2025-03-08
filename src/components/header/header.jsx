@@ -20,12 +20,12 @@ function Header() {
             <a href="" target="_self">
               {/* Найти правельный путь и лучше прописать альт */}
               {/* <img src="images/logo.png" alt="logo" /> */}
-              <img src="../public/images/logo.png" alt="logo" />
+              <img src="../public/images/logo.png" alt="Логотип для светлой темы" />
             </a>
           </div>
           <div className="header__logo _dark">
             <a href="" target="_self">
-              <img src="images/logo_dark.png" alt="logo" />
+              <img src="../public/images/logo_dark.png" alt="Логотип для темной темы" />
             </a>
           </div>
           <nav className="header__nav">
