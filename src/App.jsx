@@ -7,8 +7,8 @@ import PopExit from "./components/PopUps/PopExit/PopExit";
 
 function App() {
   return (
-    <body>
-      <div class="wrapper">
+    <div>
+      <div className="wrapper">
         <PopExit />
         <PopNewCard />
         <PopBrowse />
@@ -17,7 +17,7 @@ function App() {
       </div>
 
       <script src="js/script.js"></script>
-    </body>
+    </div>
   );
 }
 

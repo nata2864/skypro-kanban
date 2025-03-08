@@ -63,12 +63,44 @@ body {
 ._hover01:hover {
   background-color: #33399b;
 }
-
-._hover02:hover, .header__user:hover {
+/* Убрала .Создала кнопку вместо ссылки */
+/* ._hover02:hover, .header__user:hover {
   color: #33399b;
 }
 ._hover02:hover::after, .header__user:hover::after {
   border-left-color: #33399b;
+  border-bottom-color: #33399b;
+} */
+
+/* Добавила стили для созданной кнопки */
+.button_user{
+  all: unset;
+  color: #565EEF;
+  font-size: 14px;
+  line-height: 20px;
+  display: inline-flex; 
+  align-items: center;
+}
+
+.button_user:hover{
+  color: #33399b;
+}
+
+.button_user::after {
+  content: "";
+  display: inline-block; 
+  width: 6px;
+  height: 6px;
+  border-radius: 1px;
+  border-left: 1.9px solid #565EEF;
+  border-bottom: 1.9px solid #565EEF;
+  transform: rotate(-45deg);
+  margin: -6px 0 0 5px;
+  padding: 0;
+}
+
+.button_user:hover::after{
+  border-left-color: #33399b; 
   border-bottom-color: #33399b;
 }
 
@@ -756,7 +788,7 @@ body {
 .header__btn-main-new a {
   color: #FFFFFF;
 }
-.header__user {
+ /* .button_user {
   height: 20px;
   display: flex;
   flex-wrap: nowrap;
@@ -765,8 +797,8 @@ body {
   font-size: 14px;
   line-height: 20px;
   color: #565EEF;
-}
-.header__user::after {
+} 
+.button_user::after {
   content: "";
   display: block;
   width: 6px;
@@ -777,7 +809,7 @@ body {
   transform: rotate(-45deg);
   margin: -6px 0 0 5px;
   padding: 0;
-}
+} */
 .header__pop-user-set {
   display: none;
   position: absolute;
@@ -909,6 +941,14 @@ body {
   line-height: 13px;
   color: #94A6BE;
   letter-spacing: 0.2px;
+}
+
+.hidden {
+  display: none;
+}
+
+.visible {
+  display: block;
 }
 
 @media screen and (max-width: 1200px) {
