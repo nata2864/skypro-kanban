@@ -1,9 +1,9 @@
-function Column(){
+function Column({title}){
 
     return (
         <div className="main__column">
         <div className="column__title">
-          <p>Готово</p>
+          <p>{title}</p>
         </div>
         <div className="cards">
           <div className="cards__item">

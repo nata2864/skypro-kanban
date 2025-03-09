@@ -5,10 +5,10 @@ import PopUserSet from "../PopUps/PopUserSet";
 function Header() {
   const [isOpenPopUser, setIsOpenPopUser] = useState(false);
   const [isOpenPopCard, setIsOpenPopCard] = useState(false);
-  function togglePopupUser() {
+  function handleClickPopupUser() {
     setIsOpenPopUser(!isOpenPopUser);
   }
-  function togglePopupCard() {
+  function handleClickPopupCard() {
     setIsOpenPopCard(!isOpenPopCard);
   }
 
@@ -32,7 +32,7 @@ function Header() {
             <button
               className="header__btn-main-new _hover01"
               id="btnMainNew"
-              onClick={togglePopupCard}
+              onClick={handleClickPopupCard}
             >
               Создать новую задачу
             </button>
@@ -44,7 +44,7 @@ function Header() {
               <PopNewCard />
             </div>
 
-            <button className="button_user" onClick={togglePopupUser}>
+            <button className="button_user" onClick={handleClickPopupUser}>
               Ivan Ivanov
             </button>
             <div
