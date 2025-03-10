@@ -1,4 +1,11 @@
+import { cardList } from "../../data";
+import Card from "../Card/Card";
+
+
+
 function Column({title}){
+
+  const filtertasks = cardList.filter(card => card.status === title)
 
     return (
         <div className="main__column">
@@ -6,7 +13,7 @@ function Column({title}){
           <p>{title}</p>
         </div>
         <div className="cards">
-          <div className="cards__item">
+          {/* <div className="cards__item">
             <div className="cards__card card">
               <div className="card__group">
                 <div className="card__theme _green">
@@ -57,7 +64,11 @@ function Column({title}){
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
+          {filtertasks.map((card) => (  <Card key={card.id} card={card}/>)
+        
+          
+          )}
         </div>
       </div>
     )}
