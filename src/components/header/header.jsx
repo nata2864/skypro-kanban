@@ -8,7 +8,6 @@ function Header() {
   const [isOpenPopCard, setIsOpenPopCard] = useState(false);
   const [isOpenPopExit, setIsOpenPopExit] = useState(false);
 
-  
   function handleClickPopupUser() {
     setIsOpenPopUser((prev) => !prev);
   }
@@ -45,12 +44,8 @@ function Header() {
               Создать новую задачу
             </button>
 
-            <div
-              className={`pop-new-card ${isOpenPopCard ? "visible" : ""}`}
-              id="popNewCard"
-            >
-              <PopNewCard />
-            </div>
+              <PopNewCard isOpenPopCard ={isOpenPopCard} onClose={() => setIsOpenPopCard(false)}/>
+       
 
             <button className="button_user" onClick={handleClickPopupUser}>
               Ivan Ivanov

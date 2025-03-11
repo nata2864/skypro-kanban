@@ -24,7 +24,6 @@ function PopUserSet({setIsOpenPopUser,setIsOpenPopExit,isOpenPopUser}) {
                 }}
                 className="_hover03"
               >Выйти
-                            {/* <a href="#popExit">Выйти</a> */}
                             </button>
      </div>
      </div>

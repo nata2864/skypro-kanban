@@ -1,7 +1,10 @@
-function PopExit({isOpen,onClose} ){
-
-    return (
-      <div className="pop-exit" id="popExit" style={{ display: isOpen ? "block" : "none" }}>
+function PopExit({ isOpen, onClose }) {
+  return (
+    <div
+      className="pop-exit"
+      id="popExit"
+      style={{ display: isOpen ? "block" : "none" }}
+    >
       <div className="pop-exit__container">
         <div className="pop-exit__block">
           <div className="pop-exit__ttl">
@@ -9,11 +12,9 @@ function PopExit({isOpen,onClose} ){
           </div>
           <form className="pop-exit__form" id="formExit" action="#">
             <div className="pop-exit__form-group">
-              <button className="pop-exit__exit-yes _hover01" id="exitYes"    >
+              <button className="pop-exit__exit-yes _hover01" id="exitYes">
                 Да, выйти
-            
               </button>
-              {/* Разобараться с классами при активном и неактивном окне выхода */}
               <button
                 className="pop-exit__exit-no _hover03"
                 type="button"
@@ -25,9 +26,8 @@ function PopExit({isOpen,onClose} ){
           </form>
         </div>
       </div>
-  
-</div>
-      
-    )}
+    </div>
+  );
+}
 
-    export default PopExit
+export default PopExit;
