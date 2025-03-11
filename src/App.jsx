@@ -9,7 +9,7 @@ function App() {
   return (
     <div>
       <div className="wrapper">
-        <PopExit />
+        {/* <PopExit /> */}
         <PopBrowse />
         <Header />
         <Main />

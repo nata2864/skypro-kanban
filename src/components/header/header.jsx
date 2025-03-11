@@ -1,12 +1,16 @@
 import { useState } from "react";
 import PopNewCard from "../PopUps/PopNewCard/PopNewCard";
 import PopUserSet from "../PopUps/PopUserSet";
+import PopExit from "../PopUps/PopExit/PopExit";
 
 function Header() {
   const [isOpenPopUser, setIsOpenPopUser] = useState(false);
   const [isOpenPopCard, setIsOpenPopCard] = useState(false);
+  const [isOpenPopExit, setIsOpenPopExit] = useState(false);
+
+  
   function handleClickPopupUser() {
-    setIsOpenPopUser(!isOpenPopUser);
+    setIsOpenPopUser((prev) => !prev);
   }
   function handleClickPopupCard() {
     setIsOpenPopCard(!isOpenPopCard);
@@ -18,14 +22,18 @@ function Header() {
         <div className="header__block">
           <div className="header__logo _show _light">
             <a href="" target="_self">
-              {/* Найти правельный путь и лучше прописать альт */}
-              {/* <img src="images/logo.png" alt="logo" /> */}
-              <img src="../public/images/logo.png" alt="Логотип для светлой темы" />
+              <img
+                src="../../public/images/logo.png"
+                alt="Логотип для светлой темы"
+              />
             </a>
           </div>
           <div className="header__logo _dark">
             <a href="" target="_self">
-              <img src="../public/images/logo_dark.png" alt="Логотип для темной темы" />
+              <img
+                src="../public/images/logo_dark.png"
+                alt="Логотип для темной темы"
+              />
             </a>
           </div>
           <nav className="header__nav">
@@ -47,16 +55,16 @@ function Header() {
             <button className="button_user" onClick={handleClickPopupUser}>
               Ivan Ivanov
             </button>
-            <div
-              className="header__pop-user-set pop-user-set"
-              id="user-set-target"
-              style={{ display: isOpenPopUser ? "block" : "none" }}
-            >
-              <PopUserSet />
-            </div>
+
+            <PopUserSet
+              setIsOpenPopUser={setIsOpenPopUser}
+              setIsOpenPopExit={setIsOpenPopExit}
+              isOpenPopUser={isOpenPopUser}
+            />
           </nav>
         </div>
       </div>
+      <PopExit isOpen={isOpenPopExit} onClose={() => setIsOpenPopExit(false)} />
     </header>
   );
 }
