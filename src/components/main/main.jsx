@@ -8,8 +8,8 @@ const columnTitles = [
   "Готово",
 ];
 
-function Main() {
-  return (
+function Main({ loading }) {
+  return ( loading ? <p>Идёт загрузка</p> :
     <main className="main">
       <div className="container">
         <div className="main__block">

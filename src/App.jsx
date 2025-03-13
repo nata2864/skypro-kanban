@@ -1,20 +1,23 @@
 import "./App.css";
 import Header from "./components/Header/Header";
-// import PopNewCard from "./components/PopUps/PopNewCard/PopNewCard";
-import PopBrowse from "./components/PopUps/PopBrowse/PopBrowse";
+import { useState, useEffect } from "react";
 import Main from "./components/Main/Main";
-// import PopExit from "./components/PopUps/PopExit/PopExit";
 
 function App() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+  });
+
   return (
-    
-      <div className="wrapper">
-        {/* <PopExit /> */}
-        <PopBrowse />
-        <Header />
-        <Main />
-      </div>
-    
+    <div className="wrapper">
+      {/* <PopBrowse /> */}
+      <Header />
+      <Main loading={loading} />
+    </div>
   );
 }
 
