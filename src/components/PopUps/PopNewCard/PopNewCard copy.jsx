@@ -1,20 +1,15 @@
-import Calendar from "../../Calendar/Calendar";
 
-function PopNewCard({ isOpenPopCard, onClose }) {
+
+function PopNewCard2() {
   return (
-    <div
-      className="pop-new-card"
-      style={{ display: isOpenPopCard ? "block" : "none" }}
-      id="popNewCard"
-    >
+   
       <div className="pop-new-card__container">
         <div className="pop-new-card__block">
           <div className="pop-new-card__content">
             <h3 className="pop-new-card__ttl">Создание задачи</h3>
-
-            <button className="button_close" onClick={onClose}>
+            <a href="#" className="pop-new-card__close">
               ✖
-            </button>
+            </a>
             <div className="pop-new-card__wrap">
               <form
                 className="pop-new-card__form form-new"
@@ -47,7 +42,7 @@ function PopNewCard({ isOpenPopCard, onClose }) {
                   />
                 </div>
               </form>
-              <Calendar />
+        
             </div>
             <div className="pop-new-card__categories categories">
               <p className="categories__p subttl">Категория</p>
@@ -69,8 +64,8 @@ function PopNewCard({ isOpenPopCard, onClose }) {
           </div>
         </div>
       </div>
-    </div>
+  
   );
 }
 
-export default PopNewCard;
+export default PopNewCard2;
