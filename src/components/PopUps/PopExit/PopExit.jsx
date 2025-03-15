@@ -1,7 +1,10 @@
-function PopExit(){
-
-    return (
-      <div className="pop-exit" id="popExit">
+function PopExit({ isOpen, onClose }) {
+  return (
+    <div
+      className="pop-exit"
+      id="popExit"
+      style={{ display: isOpen ? "block" : "none" }}
+    >
       <div className="pop-exit__container">
         <div className="pop-exit__block">
           <div className="pop-exit__ttl">
@@ -10,21 +13,21 @@ function PopExit(){
           <form className="pop-exit__form" id="formExit" action="#">
             <div className="pop-exit__form-group">
               <button className="pop-exit__exit-yes _hover01" id="exitYes">
-                <a href="modal/signin.html">Да, выйти</a>
-                {"{"}" "{"}"}
+                Да, выйти
               </button>
-              <button className="pop-exit__exit-no _hover03" id="exitNo">
-                <a href="main.html">Нет, остаться</a>
-                {"{"}" "{"}"}
+              <button
+                className="pop-exit__exit-no _hover03"
+                type="button"
+                onClick={onClose}
+              >
+                Нет, остаться
               </button>
             </div>
           </form>
         </div>
       </div>
-  
     </div>
-    
-      
-    )}
+  );
+}
 
-    export default PopExit
+export default PopExit;
