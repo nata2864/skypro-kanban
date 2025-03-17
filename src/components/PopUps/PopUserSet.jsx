@@ -1,3 +1,5 @@
+import { Button } from "../Button.styled";
+
 
 
 function PopUserSet({setIsOpenPopUser,setIsOpenPopExit,isOpenPopUser}) {
@@ -16,15 +18,16 @@ function PopUserSet({setIsOpenPopUser,setIsOpenPopExit,isOpenPopUser}) {
                             <p>Темная тема</p>
                             <input type="checkbox" className="checkbox" name="checkbox"/>
                         </div>
-                        <button
+                        <Button size="user"
                 type="button"
                 onClick={() => {
                   setIsOpenPopUser(false);
                   setIsOpenPopExit(true);
                 }}
-                className="_hover03"
+                // className="_hover03"
               >Выйти
-                            </button>
+                            </Button>
+                           
      </div>
      </div>
     );

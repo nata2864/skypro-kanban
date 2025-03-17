@@ -102,13 +102,13 @@ body {
   border-bottom-color: #33399b;
 }
 
-._hover03:hover {
+/* ._hover03:hover {
   background-color: #33399b;
   color: #ffffff;
 }
 ._hover03:hover a {
   color: #ffffff;
-}
+} */
 
 /* .pop-user-set:target,
 .pop-exit:target, */
@@ -298,17 +298,19 @@ body {
 .pop-user-set__theme input:checked[type="checkbox"]::before {
   left: 12px;
 }
-.pop-user-set button {
+
+/* Перенесла эти стили в styled-components */
+/* .pop-user-set button {
   width: 72px;
   height: 30px;
   background: transparent;
   color: #565eef;
   border-radius: 4px;
   border: 1px solid #565eef;
-}
-.pop-user-set button a {
+} */
+/* .pop-user-set button  {
   color: #565eef;
-}
+} */
 
 .pop-new-card {
   display: none;

@@ -1,3 +1,7 @@
+import {  Button } from "../../Button.styled";
+
+
+
 function PopExit({ isOpen, onClose }) {
   return (
     <div
@@ -12,16 +16,20 @@ function PopExit({ isOpen, onClose }) {
           </div>
           <form className="pop-exit__form" id="formExit" action="#">
             <div className="pop-exit__form-group">
-              <button className="pop-exit__exit-yes _hover01" id="exitYes">
-                Да, выйти
-              </button>
-              <button
-                className="pop-exit__exit-no _hover03"
+              {/* <button className="pop-exit__exit-yes _hover01" id="exitYes"> */}
+              {/* <WhiteButton   size="exit" margin="exit"> Да, выйти</WhiteButton> */}
+
+              <Button $primary  size="exit" margin="exit">Да, выйти</Button>
+               
+              {/* </button> */}
+              <Button
+              size="exit"
+                // className="pop-exit__exit-no _hover03"
                 type="button"
                 onClick={onClose}
               >
                 Нет, остаться
-              </button>
+              </Button>
             </div>
           </form>
         </div>

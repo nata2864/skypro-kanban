@@ -44,7 +44,7 @@ function Header() {
               Создать новую задачу
             </button>
 
-              <PopNewCard isOpenPopCard ={isOpenPopCard} onClose={() => setIsOpenPopCard(false)}/>
+              {/* <PopNewCard isOpenPopCard ={isOpenPopCard} onClose={() => setIsOpenPopCard(false)}/> */}
        
 
             <button className="button_user" onClick={handleClickPopupUser}>
@@ -57,8 +57,10 @@ function Header() {
               isOpenPopUser={isOpenPopUser}
             />
           </nav>
+        
         </div>
       </div>
+      <PopNewCard isOpenPopCard ={isOpenPopCard} onClose={() => setIsOpenPopCard(false)}/>
       <PopExit isOpen={isOpenPopExit} onClose={() => setIsOpenPopExit(false)} />
     </header>
   );
