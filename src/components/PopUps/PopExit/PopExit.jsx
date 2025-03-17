@@ -19,11 +19,11 @@ function PopExit({ isOpen, onClose }) {
               {/* <button className="pop-exit__exit-yes _hover01" id="exitYes"> */}
               {/* <WhiteButton   size="exit" margin="exit"> Да, выйти</WhiteButton> */}
 
-              <Button $primary  size="exit" margin="exit">Да, выйти</Button>
+              <Button $primary  $size="exit" $margin="exit">Да, выйти</Button>
                
               {/* </button> */}
               <Button
-              size="exit"
+              $size="exit"
                 // className="pop-exit__exit-no _hover03"
                 type="button"
                 onClick={onClose}

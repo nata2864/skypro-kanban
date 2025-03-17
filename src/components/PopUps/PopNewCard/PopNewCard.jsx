@@ -1,3 +1,4 @@
+import { Button } from "../../Button.styled";
 import Calendar from "../../Calendar/Calendar";
 
 function PopNewCard({ isOpenPopCard, onClose }) {
@@ -63,9 +64,9 @@ function PopNewCard({ isOpenPopCard, onClose }) {
                 </div>
               </div>
             </div>
-            <button className="form-new__create _hover01" id="btnCreate">
+            <Button $primary $float $size="newTask" id="btnCreate">
               Создать задачу
-            </button>
+            </Button>
           </div>
         </div>
       </div>
