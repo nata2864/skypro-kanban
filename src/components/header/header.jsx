@@ -2,9 +2,7 @@ import { useState } from "react";
 import PopNewCard from "../PopUps/PopNewCard/PopNewCard";
 import PopUserSet from "../PopUps/PopUserSet";
 import PopExit from "../PopUps/PopExit/PopExit";
-import { Button} from "../Button.styled";
-// import { buttonSizes,buttonMargins } from "../const";
-// import { buttonSizes,buttonMargins  } from "../../const";
+import { Button } from "../Button.styled";
 import { HeaderUserButton } from "../HeaderUserButton.styled";
 
 function Header() {
@@ -41,7 +39,7 @@ function Header() {
           </div>
           <nav className="header__nav">
             <Button
-            $size = "new"
+              $size="new"
               $margin="new"
               $primary
               id="btnMainNew"
@@ -49,15 +47,13 @@ function Header() {
             >
               Создать новую задачу
             </Button>
-{/* 
-            <ButtonName className="button_user" onClick={handleClickPopupUser}>
-              Ivan Ivanov
-            </ButtonName> */}
 
-            
-            <HeaderUserButton  className="header__user" onClick={handleClickPopupUser}>
+            <HeaderUserButton
+              className="header__user"
+              onClick={handleClickPopupUser}
+            >
               Ivan Ivanov
-            </HeaderUserButton >
+            </HeaderUserButton>
 
             <PopUserSet
               setIsOpenPopUser={setIsOpenPopUser}
