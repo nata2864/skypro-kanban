@@ -33,8 +33,8 @@ export const UserMail = styled.p`
   margin-bottom: 10px;
 `;
 
-export const ThemeBlock = styled.p`
-  color: #94a6be;
+export const ThemeBlock = styled.div`
+ 
   display: flex;
   align-items: center;
   justify-content: space-between;

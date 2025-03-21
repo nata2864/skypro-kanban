@@ -81,7 +81,7 @@ export const Content = styled.div`
   justify-content: space-between;
 `;
 
-export const Date = styled.p`
+export const Date = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
