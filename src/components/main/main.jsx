@@ -1,4 +1,5 @@
 import Column from "../Column/Column";
+import * as S from "./Main.styled"
 
 const columnTitles = [
   "Без статуса",
@@ -10,17 +11,17 @@ const columnTitles = [
 
 function Main({ loading }) {
   return ( loading ? <p>Идёт загрузка</p> :
-    <main className="main">
-      <div className="container">
-        <div className="main__block">
-          <div className="main__content">
+    <S.Main>
+      <S.Container>
+        <S.MainBlock>
+          <S.MainContent>
             {columnTitles.map((item, index) => (
               <Column key={index} title={item} />
             ))}
-          </div>
-        </div>
-      </div>
-    </main>
+          </S.MainContent>
+        </S.MainBlock>
+      </S.Container>
+    </S.Main>
   );
 }
 

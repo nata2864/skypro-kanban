@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { buttonSizes,buttonMargins } from "../const";
+import { buttonSizes, buttonMargins } from "../const";
 
 export const Button = styled.button`
   height: 30px;
@@ -16,8 +16,7 @@ export const Button = styled.button`
   text-align: center;
   cursor: pointer;
   outline: none;
-  //  float: right;
-  
+
    margin-right: ${({ $margin }) => buttonMargins[$margin] || 0};
 
 
@@ -34,5 +33,3 @@ export const Button = styled.button`
     border: none;
   }
 `;
-
-

@@ -1,19 +1,19 @@
-import { Button } from "../Button.styled";
+import { Button } from "../../Button.styled";
+import * as S from "./PopUserSet.styled"
 
 function PopUserSet({ setIsOpenPopUser, setIsOpenPopExit, isOpenPopUser }) {
   return (
-    <div
-      className="header__pop-user-set pop-user-set"
+    <S.PopUserSet
       id="user-set-target"
       style={{ display: isOpenPopUser ? "block" : "none" }}
     >
       <div>
-        <p className="pop-user-set__name">Ivan Ivanov</p>
-        <p className="pop-user-set__mail">ivan.ivanov@gmail.com</p>
-        <div className="pop-user-set__theme">
-          <p>Темная тема</p>
-          <input type="checkbox" className="checkbox" name="checkbox" />
-        </div>
+        <S.UserName>Ivan Ivanov</S.UserName>
+        <S.UserMail>ivan.ivanov@gmail.com</S.UserMail>
+        <S.ThemeBlock>
+          <S.ThemeName>Темная тема</S.ThemeName>
+          <S.ThemeCheckbox type="checkbox" name="checkbox" />
+        </S.ThemeBlock>
         <Button
           $size="user"
           type="button"
@@ -25,7 +25,7 @@ function PopUserSet({ setIsOpenPopUser, setIsOpenPopExit, isOpenPopUser }) {
           Выйти
         </Button>
       </div>
-    </div>
+    </S.PopUserSet>
   );
 }
 

@@ -1,37 +1,29 @@
+import Categorie from "../Categorie/Categorie";
+import * as S from "./Card.styled"
+
 function Card({card}) {
 
 const { topic, title, date} = card;
-
-const topicClasses = {
-  "Research": "_green",
-  "Copywriting": "_purple",
-  "Web Design": "_orange",
-};
-
-const topicClass = topicClasses[topic]
-
   return (
-    <div className="cards__item">
-      <div className="cards__card card">
-        <div className="card__group">
-          {/* <div className="card__theme _green"> */}
-          <div className={`card__theme ${topicClass}`}>
-            <p className={topicClass}>{topic}</p>
-          </div>
+    <S.CardsItem>
+      <S.Card>
+        <S.CardGroep>
+       
+          <Categorie topic={topic}/>
           <a href="#popBrowse" target="_self">
-            <div className="card__btn">
-              <div />
-              <div />
-              <div />
-            </div>
+            <S.CardButton>
+              <S.Item />
+              <S.Item />
+              <S.Item />
+            </S.CardButton>
           </a>
-        </div>
-        <div className="card__content">
+        </S.CardGroep>
+        <S.Content>
           <a href="" target="_blank">
-            <h3 className="card__title">{title}</h3>
+            <S.Title>{title}</S.Title>
           </a>
-          <div className="card__date">
-            <svg
+          <S.Date>
+            <S.Icon
               xmlns="http://www.w3.org/2000/svg"
               width={13}
               height={13}
@@ -58,12 +50,12 @@ const topicClass = topicClasses[topic]
                   <rect width={13} height={13} fill="white" />
                 </clipPath>
               </defs>
-            </svg>
-            <p>{date}</p>
-          </div>
-        </div>
-      </div>
-    </div>
+            </S.Icon>
+            <S.DateText>{date}</S.DateText>
+          </S.Date>
+        </S.Content >
+      </S.Card>
+    </S.CardsItem>
   );
 }
 

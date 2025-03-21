@@ -1,6 +1,5 @@
-// import Header from "./components/Header/Header";
 import { useState, useEffect } from "react";
-// import Main from "./components/Main/Main";
+import { Wrapper } from "./MainPage.styled";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 
@@ -14,10 +13,10 @@ function MainPage() {
   });
 
   return (
-    <div className="wrapper">
+    <Wrapper>
       <Header />
       <Main loading={loading} />
-    </div>
+    </Wrapper>
   );
 }
 

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+
 export const HeaderUserButton = styled.p`
   height: 20px;
   display: flex;
@@ -8,7 +9,9 @@ export const HeaderUserButton = styled.p`
   justify-content: center;
   font-size: 14px;
   line-height: 20px;
-  color: #565eef;
+   color: #565eef;
+
+
   cursor: pointer;
 
   &:hover {

@@ -1,9 +1,13 @@
 import { useState } from "react";
 import PopNewCard from "../PopUps/PopNewCard/PopNewCard";
-import PopUserSet from "../PopUps/PopUserSet";
+// import PopUserSet from "../PopUps/PopUserSet";
+import PopUserSet from "../PopUps/PopUserSet/PopUserSet";
+
 import PopExit from "../PopUps/PopExit/PopExit";
 import { Button } from "../Button.styled";
-import { HeaderUserButton } from "../HeaderUserButton.styled";
+import { HeaderUserButton } from "./HeaderUserButton.styled";
+import Logo from "../Logo/Logo";
+import * as S from "./Header.styled";
 
 function Header() {
   const [isOpenPopUser, setIsOpenPopUser] = useState(false);
@@ -18,17 +22,18 @@ function Header() {
   }
 
   return (
-    <header className="header">
-      <div className="container">
-        <div className="header__block">
-          <div className="header__logo _show _light">
+    <S.Header>
+      <S.Container>
+        <S.Block>
+          {/* <div className="header__logo _show _light">
             <a href="" target="_self">
               <img
                 src="../../public/images/logo.png"
                 alt="Логотип для светлой темы"
               />
             </a>
-          </div>
+          </div> */}
+          <Logo />
           <div className="header__logo _dark">
             <a href="" target="_self">
               <img
@@ -37,7 +42,7 @@ function Header() {
               />
             </a>
           </div>
-          <nav className="header__nav">
+          <S.Nav>
             <Button
               $size="new"
               $margin="new"
@@ -47,28 +52,23 @@ function Header() {
             >
               Создать новую задачу
             </Button>
-
-            <HeaderUserButton
-              className="header__user"
-              onClick={handleClickPopupUser}
-            >
+            <HeaderUserButton onClick={handleClickPopupUser}>
               Ivan Ivanov
             </HeaderUserButton>
-
             <PopUserSet
               setIsOpenPopUser={setIsOpenPopUser}
               setIsOpenPopExit={setIsOpenPopExit}
               isOpenPopUser={isOpenPopUser}
             />
-          </nav>
-        </div>
-      </div>
+          </S.Nav>
+        </S.Block>
+      </S.Container>
       <PopNewCard
         isOpenPopCard={isOpenPopCard}
         onClose={() => setIsOpenPopCard(false)}
       />
       <PopExit isOpen={isOpenPopExit} onClose={() => setIsOpenPopExit(false)} />
-    </header>
+    </S.Header>
   );
 }
 
