@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Wrapper } from "./MainPage.styled";
-import Header from "../Header/Header";
-import Main from "../Main/Main";
+import Header from "../../components/Header/Header";
+import Main from "../../components/Main/Main";
 
 function MainPage() {
   const [loading, setLoading] = useState(true);

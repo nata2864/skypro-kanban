@@ -3,7 +3,7 @@ import { buttonSizes, buttonMargins } from "../const";
 
 export const Button = styled.button`
   height: 30px;
-   width: ${({ $size }) => buttonSizes[$size] || "auto"};
+   width: ${({ $size }) => buttonSizes[$size] || "100%"};
   background-color: ${(props) => (props.$primary ? "#565eef" : "transparent")};
   color: ${(props) => (props.$primary ? "#FFFFFF" : "#565eef")};
   float: ${(props) => (props.$float ? "right" : "none")};
@@ -33,3 +33,5 @@ export const Button = styled.button`
     border: none;
   }
 `;
+
+

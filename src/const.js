@@ -2,7 +2,8 @@ export const buttonSizes = {
   user: "72px",
   exit: "153px",
   new: "178px",
-  newTask:"132px"
+  newTask:"132px",
+  auth:"248px"
 };
 
 export const buttonMargins = {
@@ -23,10 +24,16 @@ export  const theme = {
   background:"#e9d4ff" ,
   color: "#9a48f1"
 },
-gray: {
+grey: {
   background:"#94a6be" ,
   color: "#ffffff"
 }
 
+}
+
+export const colorPageTheme ={
+  light: " #EAEEF6",
+  dark:"#EAEEF6",
+  grey:"#EAEEF6" 
 
 }
