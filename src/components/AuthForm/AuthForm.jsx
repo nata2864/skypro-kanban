@@ -1,24 +1,29 @@
 // import { AuthButton } from "../Button.styled";
-import * as S from "./AuthForm.styled"
+import * as S from "./AuthForm.styled";
 import { AuthButton } from "./AuthForm.styled";
 
-function AuthForm() {
+import { RoutesApp } from "../../const";
+
+function AuthForm({ isSignUp }) {
   return (
     <S.Wrapper>
       <S.Container>
         <S.Modal>
           <S.ModalBlok>
             <div>
-              <S.Title>Регистрация</S.Title>
+              <S.Title>{isSignUp ? "Регистрация" : "Вход"}</S.Title>
             </div>
             <S.Form id="formLogUp" action="#">
-              <S.Input
-                className="modal__input first-name"
-                type="text"
-                name="first-name"
-                id="first-name"
-                placeholder="Имя"
-              />
+              {isSignUp && (
+                <S.Input
+                  className="modal__input first-name"
+                  type="text"
+                  name="first-name"
+                  id="first-name"
+                  placeholder="Имя"
+                />
+              )}
+
               <S.Input
                 className="modal__input login"
                 type="text"
@@ -33,17 +38,33 @@ function AuthForm() {
                 id="passwordFirst"
                 placeholder="Пароль"
               />
-              <AuthButton 
-             $primary
-                id="SignUpEnter"
-              >
-                <a href="../main.html">Зарегистрироваться</a>{" "}
+              <AuthButton $primary id="SignUpEnter">
+                <a href="../main.html">
+                  {isSignUp ? "Зарегистрироваться" : "Войти"}
+                </a>
               </AuthButton>
-              <div className="modal__form-group">
-                <S.ModalText>
-                  Уже есть аккаунт? <S.ModalLink href="signin.html">Войдите здесь</S.ModalLink>
-                </S.ModalText>
-              </div>
+              <S.TextGroep>
+                {isSignUp && (
+                  <div>
+                    <S.ModalText>
+                      Уже есть аккаунт?{" "}
+                      <S.ModalLink to={RoutesApp.SIGN_IN}>
+                        Войдите здесь
+                      </S.ModalLink>
+                    </S.ModalText>
+                  </div>
+                )}
+                {!isSignUp && (
+                  <div>
+                    <S.ModalText>
+                      Нужно зарегистрироваться?{" "}
+                      <S.ModalLink to={RoutesApp.SIGN_UP}>
+                        Регистрируйтесь здесь
+                      </S.ModalLink>
+                    </S.ModalText>
+                  </div>
+                )}
+              </S.TextGroep>
             </S.Form>
           </S.ModalBlok>
         </S.Modal>

@@ -1,13 +1,14 @@
 import styled from "styled-components";
-import { colorPageTheme } from "../../const";
+import {colorPageTheme}  from "../../const";
 import { Button } from "../Button.styled";
+import { Link } from "react-router-dom";
 
 export const Wrapper = styled.div`
   width: 100%;
   height: 100%;
   overflow-x: hidden;
   overflow-y: scroll;
-  background-color: ${colorPageTheme.grey};
+  background-color:${colorPageTheme.light};
 `;
 
 export const Container = styled.div`
@@ -93,10 +94,16 @@ export const Input = styled.input`
 export const AuthButton = styled(Button)`
   margin-top: 13px;
   margin-bottom: 20px;
+
   @media (max-width: 375px) {
     height: 40px;
   }
 `;
+
+export const TextGroep = styled.div`
+  text-align: center;
+`;
+
 
 export const ModalText = styled.p`
   color: rgba(148, 166, 190, 0.4);
@@ -106,12 +113,13 @@ export const ModalText = styled.p`
   letter-spacing: -0.14px;
 `;
 
-export const ModalLink = styled.a`
+export const ModalLink = styled(Link)`
   color: rgba(148, 166, 190, 0.4);
   font-size: 14px;
   font-weight: 400;
   line-height: 150%;
   letter-spacing: -0.14px;
   text-decoration: underline;
+
 `;
 

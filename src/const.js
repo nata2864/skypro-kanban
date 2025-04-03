@@ -1,9 +1,16 @@
+
+export const RoutesApp ={
+  MAIN:"/",
+  SIGN_IN:"/sign-in",
+  SIGN_UP:"/sign-up",
+  NOT_FOUND: "*",
+  }
+
 export const buttonSizes = {
   user: "72px",
   exit: "153px",
   new: "178px",
   newTask:"132px",
-  auth:"248px"
 };
 
 export const buttonMargins = {
@@ -32,8 +39,8 @@ grey: {
 }
 
 export const colorPageTheme ={
-  light: " #EAEEF6",
+  light:"#EAEEF6",
   dark:"#EAEEF6",
-  grey:"#EAEEF6" 
-
+  // grey: "#EAEEF6",
 }
+
