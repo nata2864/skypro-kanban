@@ -1,15 +1,23 @@
+import { useParams } from "react-router-dom";
+import Calendar from "../../Calendar/Calendar";
+import * as S from "./PopBrowse.styled"
+
 function PopBrowse() {
+
+const {id} = useParams();
+console.log(id)
+
   return (
-    <div className="pop-browse" id="popBrowse">
-    <div className="pop-browse__container">
-      <div className="pop-browse__block">
-        <div className="pop-browse__content">
-          <div className="pop-browse__top-block">
-            <h3 className="pop-browse__ttl">Название задачи</h3>
+    <S.PopBrowseWrapper id="popBrowse">
+    <S.PopBrowseContainer>
+      <S.PopBrowseBlock>
+        <S.PopBrowseContent>
+          <S.PopBrowseTopBlock>
+            <S.PopBrowseTitle>Название задачи</S.PopBrowseTitle>
             <div className="categories__theme theme-top _orange _active-category">
               <p className="_orange">Web Design</p>
             </div>
-          </div>
+          </S.PopBrowseTopBlock>
           <div className="pop-browse__status status">
             <p className="status__p subttl">Статус</p>
             <div className="status__themes">
@@ -30,17 +38,16 @@ function PopBrowse() {
               </div>
             </div>
           </div>
-          <div className="pop-browse__wrap">
-            <form
-              className="pop-browse__form form-browse"
+          <S.PopBrowseWrap>
+            <S.PopBrowseForm
               id="formBrowseCard"
               action="#"
             >
-              <div className="form-browse__block">
+              <S.FormBrowseBlock>
                 <label htmlFor="textArea01" className="subttl">
                   Описание задачи
                 </label>
-                <textarea
+                <S.FormBrowseArea
                   className="form-browse__area"
                   name="text"
                   id="textArea01"
@@ -48,9 +55,9 @@ function PopBrowse() {
                   placeholder="Введите описание задачи..."
                   defaultValue={""}
                 />
-              </div>
-            </form>
-            <div className="pop-new-card__calendar calendar">
+              </S.FormBrowseBlock>
+            </S.PopBrowseForm>
+            {/* <div className="pop-new-card__calendar calendar">
               <p className="calendar__ttl subttl">Даты</p>
               <div className="calendar__block">
                 <div className="calendar__nav">
@@ -140,14 +147,15 @@ function PopBrowse() {
                   </p>
                 </div>
               </div>
-            </div>
-          </div>
-          <div className="theme-down__categories theme-down">
+            </div> */}
+            <Calendar/>
+          </S.PopBrowseWrap>
+          {/* <div className="theme-down__categories theme-down">
             <p className="categories__p subttl">Категория</p>
             <div className="categories__theme _orange _active-category">
               <p className="_orange">Web Design</p>
             </div>
-          </div>
+          </div> */}
           <div className="pop-browse__btn-browse ">
             <div className="btn-group">
               <button className="btn-browse__edit _btn-bor _hover03">
@@ -180,10 +188,10 @@ function PopBrowse() {
               <a href="#">Закрыть</a>
             </button>
           </div>
-        </div>
-      </div>
-    </div>
-  </div>
+        </S.PopBrowseContent>
+      </S.PopBrowseBlock>
+    </S.PopBrowseContainer>
+  </S.PopBrowseWrapper>
   
   );
 }

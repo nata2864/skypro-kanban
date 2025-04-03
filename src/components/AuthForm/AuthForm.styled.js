@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import {colorPageTheme}  from "../../const";
 import { Button } from "../Button.styled";
+import { Placeholder } from "../PlaceHolder.styled";
 import { Link } from "react-router-dom";
 
 export const Wrapper = styled.div`
@@ -65,7 +66,7 @@ export const Form = styled.form`
   justify-content: center;
 `;
 
-export const Input = styled.input`
+export const Input = styled(Placeholder)`
   width: 100%;
   min-width: 100%;
   border-radius: 8px;

@@ -1,22 +1,24 @@
 import Categorie from "../Categorie/Categorie";
-import * as S from "./Card.styled"
+import * as S from "./Card.styled";
+import { useNavigate } from "react-router-dom";
 
 function Card({card}) {
 
-const { topic, title, date} = card;
+const { topic, title, date, id } = card;
+const navigate = useNavigate();
   return (
     <S.CardsItem>
       <S.Card>
         <S.CardGroep>
        
           <Categorie topic={topic}/>
-          <a href="#popBrowse" target="_self">
-            <S.CardButton>
+          
+            <S.CardButton onClick={() => navigate(`/card/${id}`)}>
               <S.Item />
               <S.Item />
               <S.Item />
             </S.CardButton>
-          </a>
+          
         </S.CardGroep>
         <S.Content>
           <a href="" target="_blank">
