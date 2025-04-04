@@ -1,7 +1,7 @@
 import SignIn from "../../components/SignIn";
 
-function SignInPage() {
-  return <SignIn isSignUp={false} />;
+function SignInPage({setIsAuth}) {
+  return <SignIn isSignUp={false} setIsAuth={setIsAuth}/>;
 }
 
 export default SignInPage;
