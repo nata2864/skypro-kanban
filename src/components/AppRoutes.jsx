@@ -7,9 +7,12 @@ import { RoutesApp } from "../const";
 import PopNewCardPage from "../pages/PopNewCardPage";
 import PopBrowsePage from "../pages/PopBrowsePage";
 import PopExitPage from "../pages/PopExitPage";
+import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
+import PrivateRoute from "./PrivateRoute";
 
 function AppRoutes() {
     const [loading, setLoading] = useState(true);
+    const [isAuth, setIsAuth] = useState(false);
 
 
     useEffect(() => {
@@ -20,13 +23,16 @@ function AppRoutes() {
   
    return (
          <Routes> 
-            <Route path={RoutesApp.MAIN} element={<MainPage loading={loading} />}>
+           <Route element={<PrivateRoute isAuth={isAuth} />}>
+            <Route path={RoutesApp.MAIN} element={<MainPage loading={loading} setIsAuth={setIsAuth} />}>
         <Route path={RoutesApp.NEWCARD} element={<PopNewCardPage />} />
         <Route path={RoutesApp.BROWSE} element={<PopBrowsePage />} />
-        <Route path={RoutesApp.EXIT} element={<PopExitPage />} /> 
+        <Route path={RoutesApp.EXIT} element={<PopExitPage setIsAuth={setIsAuth} />} /> 
       </Route>
-            <Route path={RoutesApp.SIGN_IN} element={<SignInPage  />} />       
+      </Route>
+            <Route path={RoutesApp.SIGN_IN} element={<SignInPage  setIsAuth={setIsAuth}  />} />       
             <Route path={RoutesApp.SIGN_UP} element={<SignUpPage />} />
+            <Route path={RoutesApp.NOT_FOUND}  element={<NotFoundPage />} />
          </Routes>
       
    );
