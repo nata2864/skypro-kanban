@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const PopUserSet = styled.div`
-  display: none;
+   display: ${({ $isOpen }) => ($isOpen ? "block" : "none")};
   position: absolute;
   top: 61px;
   right: 0;

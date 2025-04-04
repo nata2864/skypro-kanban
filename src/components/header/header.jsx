@@ -1,9 +1,7 @@
 import { useState } from "react";
-import PopNewCard from "../PopUps/PopNewCard/PopNewCard";
-// import PopUserSet from "../PopUps/PopUserSet";
+import { RoutesApp } from "../../const";
 import PopUserSet from "../PopUps/PopUserSet/PopUserSet";
 import { useNavigate } from "react-router-dom";
-import PopExit from "../PopUps/PopExit/PopExit";
 import { Button } from "../Button.styled";
 import { HeaderUserButton } from "./HeaderUserButton.styled";
 import Logo from "../Logo/Logo";
@@ -11,7 +9,6 @@ import * as S from "./Header.styled";
 
 function Header() {
   const [isOpenPopUser, setIsOpenPopUser] = useState(false);
-  const [isOpenPopExit, setIsOpenPopExit] = useState(false);
 
   function handleClickPopupUser() {
     setIsOpenPopUser((prev) => !prev);
@@ -46,7 +43,7 @@ function Header() {
               $margin="new"
               $primary
               id="btnMainNew"
-              onClick={() => navigate("/card/add")}
+              onClick={() => navigate(RoutesApp.NEWCARD)}
             >
               Создать новую задачу
             </Button>
@@ -55,17 +52,11 @@ function Header() {
             </HeaderUserButton>
             <PopUserSet
               setIsOpenPopUser={setIsOpenPopUser}
-              setIsOpenPopExit={setIsOpenPopExit}
               isOpenPopUser={isOpenPopUser}
             />
           </S.Nav>
         </S.Block>
       </S.Container>
-      {/* <PopNewCard
-        isOpenPopCard={isOpenPopCard}
-        onClose={() => setIsOpenPopCard(false)}
-      /> */}
-      <PopExit isOpen={isOpenPopExit} onClose={() => setIsOpenPopExit(false)} />
     </S.Header>
   );
 }

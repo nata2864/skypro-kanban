@@ -1,11 +1,14 @@
+import { useNavigate } from "react-router-dom";
 import { Button } from "../../Button.styled";
 import * as S from "./PopUserSet.styled"
+import { RoutesApp } from "../../../const";
 
-function PopUserSet({ setIsOpenPopUser, setIsOpenPopExit, isOpenPopUser }) {
+function PopUserSet({ setIsOpenPopUser, isOpenPopUser }) {
+  const navigate= useNavigate();
+ 
   return (
     <S.PopUserSet
-      id="user-set-target"
-      style={{ display: isOpenPopUser ? "block" : "none" }}
+    $isOpen={isOpenPopUser}
     >
       <div>
         <S.UserName>Ivan Ivanov</S.UserName>
@@ -19,8 +22,9 @@ function PopUserSet({ setIsOpenPopUser, setIsOpenPopExit, isOpenPopUser }) {
           type="button"
           onClick={() => {
             setIsOpenPopUser(false);
-            setIsOpenPopExit(true);
-          }}
+             navigate(RoutesApp.EXIT);
+            }
+          }
         >
           Выйти
         </Button>

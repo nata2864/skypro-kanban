@@ -1,6 +1,5 @@
 import { Button } from "../../Button.styled";
 import Calendar from "../../Calendar/Calendar";
-// import { PopNewCardWrapper } from "./PopNewCard.styled";
 import * as S from "./PopNewCard.styled";
 
 function PopNewCard({ onClose }) {
