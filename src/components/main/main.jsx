@@ -9,17 +9,18 @@ const columnTitles = [
   "Готово",
 ];
 
-function Main({ loading }) {
+function Main({ loading, tasks, error }) {
   return ( loading ? <p>Идёт загрузка</p> :
     <S.Main>
       <S.Container>
         <S.MainBlock>
           <S.MainContent>
             {columnTitles.map((item, index) => (
-              <Column key={index} title={item} />
+              <Column key={index} title={item} tasks={tasks} />
             ))}
           </S.MainContent>
         </S.MainBlock>
+        <p>{error}</p>
       </S.Container>
     </S.Main>
   );

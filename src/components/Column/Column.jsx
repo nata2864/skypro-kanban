@@ -1,9 +1,9 @@
-import { cardList } from "../../data";
+// import { cardList } from "../../data";
 import Card from "../Card/Card";
-import *as S from "./Column.styled"
+import * as S from "./Column.styled";
 
-function Column({ title }) {
-  const filtertasks = cardList.filter((card) => card.status === title);
+function Column({ title, tasks }) {
+  const filtertasks = tasks.filter((task) => task.status === title);
 
   return (
     <S.Column>
@@ -11,9 +11,9 @@ function Column({ title }) {
         <S.Title>{title}</S.Title>
       </S.ColumnRow>
       <S.Cards>
-        {filtertasks.map((card) => (
-          <Card key={card.id} card={card} />
-        ))}
+        {filtertasks.map((task) => {
+          return <Card key={task._id} task={task} />;
+        })}
       </S.Cards>
     </S.Column>
   );

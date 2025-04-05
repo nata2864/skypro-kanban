@@ -2,9 +2,9 @@ import Categorie from "../Categorie/Categorie";
 import * as S from "./Card.styled";
 import { useNavigate } from "react-router-dom";
 
-function Card({card}) {
+function Card({task}) {
 
-const { topic, title, date, id } = card;
+const { topic, title, date, id } = task;
 const navigate = useNavigate();
   return (
     <S.CardsItem>

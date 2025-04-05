@@ -24,7 +24,7 @@ function AppRoutes() {
    return (
          <Routes> 
            <Route element={<PrivateRoute isAuth={isAuth} />}>
-            <Route path={RoutesApp.MAIN} element={<MainPage loading={loading} setIsAuth={setIsAuth} />}>
+            <Route path={RoutesApp.MAIN} element={<MainPage loading={loading} setLoading={setLoading} setIsAuth={setIsAuth} />}>
         <Route path={RoutesApp.NEWCARD} element={<PopNewCardPage />} />
         <Route path={RoutesApp.BROWSE} element={<PopBrowsePage />} />
         <Route path={RoutesApp.EXIT} element={<PopExitPage setIsAuth={setIsAuth} />} /> 
