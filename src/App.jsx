@@ -1,8 +1,8 @@
 import "./App.css";
-import { GlobalStyle } from "./components/Global.styled";
+import { GlobalStyle } from "./Global.styled";
 import { ThemeProvider } from "styled-components";
 import { theme } from "./const";
-import AppRoutes from "./components/AppRoutes";
+import AppRoutes from "./AppRoutes";
 
 function App() {
   return (

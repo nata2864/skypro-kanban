@@ -1,14 +1,14 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState } from "react";
-import MainPage from "../pages/MainPage/MainPage";
-import SignInPage from "../pages/SignInPage/SignInPage";
-import SignUpPage from "../pages/SignUpPage/SignUpPage";
-import { RoutesApp } from "../const";
-import PopNewCardPage from "../pages/PopNewCardPage/PopNewCardPage.jsx";
-import PopBrowsePage from "../pages/PopBrowsePage/PopBrowsePage.jsx";
-import PopExitPage from "../pages/PopExitPage/PopExitPage.jsx";
-import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
-import PrivateRoute from "./PrivateRoute";
+import MainPage from "./pages/MainPage/MainPage.jsx";
+import SignInPage from "./pages/SignInPage/SignInPage.jsx";
+import SignUpPage from "./pages/SignUpPage/SignUpPage.jsx";
+import { RoutesApp } from "./const.js";
+import PopNewCardPage from "./pages/PopNewCardPage/PopNewCardPage.jsx";
+import PopBrowsePage from "./pages/PopBrowsePage/PopBrowsePage.jsx";
+import PopExitPage from "./pages/PopExitPage/PopExitPage.jsx";
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage.jsx";
+import PrivateRoute from "./PrivateRoute.jsx";
 
 function AppRoutes() {
   const [isAuth, setIsAuth] = useState(false);
