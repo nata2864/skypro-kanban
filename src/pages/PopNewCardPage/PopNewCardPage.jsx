@@ -1,4 +1,4 @@
-import PopNewCard from "../components/PopUps/PopNewCard/PopNewCard";
+import PopNewCard from "../../components/PopUps/PopNewCard/PopNewCard";
 
 function PopNewCardPage() {
     return <PopNewCard />;

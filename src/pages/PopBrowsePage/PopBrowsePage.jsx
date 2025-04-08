@@ -1,4 +1,4 @@
-import PopBrowse from "../components/PopUps/PopBrowse/PopBrowse";
+import PopBrowse from "../../components/PopUps/PopBrowse/PopBrowse";
 
 function PopBrowsePage() {
   return <PopBrowse />;
