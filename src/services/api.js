@@ -5,8 +5,7 @@ export async function fetchTasks({ token }) {
    try {
       const data = await axios.get(API_URL, {
          headers: {
-            Authorization: 'Bearer ' + token,
-         },
+            Authorization: `Bearer ${token}`}
       })
       return data.data.tasks
  

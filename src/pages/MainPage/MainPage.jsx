@@ -5,9 +5,16 @@ import Main from "../../components/Main/Main";
 import { useCallback, useState, useEffect } from "react";
 import { fetchTasks } from "../../services/api";
 
-function MainPage({ loading, setLoading }) {
+function MainPage() {
+  const [loading, setLoading] = useState(true);
   const [tasks, setTasks] = useState([]);
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+  });
 
   const getTasks = useCallback(async () => {
     try {
