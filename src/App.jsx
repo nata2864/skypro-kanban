@@ -1,23 +1,15 @@
 import "./App.css";
-import Header from "./components/Header/Header";
-import { useState, useEffect } from "react";
-import Main from "./components/Main/Main";
+import { GlobalStyle } from "./Global.styled";
+import { ThemeProvider } from "styled-components";
+import { theme } from "./const";
+import AppRoutes from "./AppRoutes";
 
 function App() {
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 3000);
-  });
-
   return (
-    <div className="wrapper">
-      {/* <PopBrowse /> */}
-      <Header />
-      <Main loading={loading} />
-    </div>
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <AppRoutes />
+    </ThemeProvider>
   );
 }
 

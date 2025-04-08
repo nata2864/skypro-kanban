@@ -1,37 +1,31 @@
-function Card({card}) {
+import Categorie from "../Categorie/Categorie";
+import * as S from "./Card.styled";
+import { useNavigate } from "react-router-dom";
 
-const { topic, title, date} = card;
+function Card({task}) {
 
-const topicClasses = {
-  "Research": "_green",
-  "Copywriting": "_purple",
-  "Web Design": "_orange",
-};
-
-const topicClass = topicClasses[topic]
-
+const { topic, title, date, id } = task;
+const navigate = useNavigate();
   return (
-    <div className="cards__item">
-      <div className="cards__card card">
-        <div className="card__group">
-          {/* <div className="card__theme _green"> */}
-          <div className={`card__theme ${topicClass}`}>
-            <p className={topicClass}>{topic}</p>
-          </div>
-          <a href="#popBrowse" target="_self">
-            <div className="card__btn">
-              <div />
-              <div />
-              <div />
-            </div>
-          </a>
-        </div>
-        <div className="card__content">
+    <S.CardsItem>
+      <S.Card>
+        <S.CardGroep>
+       
+          <Categorie topic={topic}/>
+          
+            <S.CardButton onClick={() => navigate(`/card/${id}`)}>
+              <S.Item />
+              <S.Item />
+              <S.Item />
+            </S.CardButton>
+          
+        </S.CardGroep>
+        <S.Content>
           <a href="" target="_blank">
-            <h3 className="card__title">{title}</h3>
+            <S.Title>{title}</S.Title>
           </a>
-          <div className="card__date">
-            <svg
+          <S.Date>
+            <S.Icon
               xmlns="http://www.w3.org/2000/svg"
               width={13}
               height={13}
@@ -58,12 +52,12 @@ const topicClass = topicClasses[topic]
                   <rect width={13} height={13} fill="white" />
                 </clipPath>
               </defs>
-            </svg>
-            <p>{date}</p>
-          </div>
-        </div>
-      </div>
-    </div>
+            </S.Icon>
+            <S.DateText>{date}</S.DateText>
+          </S.Date>
+        </S.Content >
+      </S.Card>
+    </S.CardsItem>
   );
 }
 

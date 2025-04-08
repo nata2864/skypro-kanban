@@ -1,32 +1,47 @@
-function PopExit({ isOpen, onClose }) {
+import { Button } from "../../Button.styled";
+import { useNavigate } from "react-router-dom";
+import * as S from "./PopExit.styled";
+import { RoutesApp } from "../../../const";
+
+function PopExit({ setIsAuth }) {
+  const navigate = useNavigate();
+
+  function handleLogout(e) {
+    e.preventDefault();
+    setIsAuth(false);
+    navigate(RoutesApp.SIGN_IN);
+  }
   return (
-    <div
-      className="pop-exit"
-      id="popExit"
-      style={{ display: isOpen ? "block" : "none" }}
-    >
-      <div className="pop-exit__container">
-        <div className="pop-exit__block">
-          <div className="pop-exit__ttl">
+    <S.PopExit>
+      <S.Container>
+        <S.Block>
+          <S.Title>
             <h2>Выйти из аккаунта?</h2>
-          </div>
-          <form className="pop-exit__form" id="formExit" action="#">
-            <div className="pop-exit__form-group">
-              <button className="pop-exit__exit-yes _hover01" id="exitYes">
+          </S.Title>
+          <S.Form id="formExit">
+          <S.FormGroup>
+              <Button
+                $primary
+                $size="exit"
+                $margin="exit"
+                onClick={handleLogout}
+              >
                 Да, выйти
-              </button>
-              <button
-                className="pop-exit__exit-no _hover03"
+              </Button>
+              <Button
+                $size="exit"
                 type="button"
-                onClick={onClose}
+                onClick={() => {
+                  navigate(RoutesApp.MAIN);
+                }}
               >
                 Нет, остаться
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
+              </Button>
+            </S.FormGroup>
+          </S.Form>
+        </S.Block>
+      </S.Container>
+    </S.PopExit>
   );
 }
 

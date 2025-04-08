@@ -1,32 +1,34 @@
 import { useState } from "react";
-import PopNewCard from "../PopUps/PopNewCard/PopNewCard";
-import PopUserSet from "../PopUps/PopUserSet";
-import PopExit from "../PopUps/PopExit/PopExit";
+import { RoutesApp } from "../../const";
+import PopUserSet from "../PopUps/PopUserSet/PopUserSet";
+import { useNavigate } from "react-router-dom";
+import { Button } from "../Button.styled";
+import { HeaderUserButton } from "./HeaderUserButton.styled";
+import Logo from "../Logo/Logo";
+import * as S from "./Header.styled";
 
 function Header() {
   const [isOpenPopUser, setIsOpenPopUser] = useState(false);
-  const [isOpenPopCard, setIsOpenPopCard] = useState(false);
-  const [isOpenPopExit, setIsOpenPopExit] = useState(false);
 
   function handleClickPopupUser() {
     setIsOpenPopUser((prev) => !prev);
   }
-  function handleClickPopupCard() {
-    setIsOpenPopCard(!isOpenPopCard);
-  }
+
+  const navigate = useNavigate();
 
   return (
-    <header className="header">
-      <div className="container">
-        <div className="header__block">
-          <div className="header__logo _show _light">
+    <S.Header>
+      <S.Container>
+        <S.Block>
+          {/* <div className="header__logo _show _light">
             <a href="" target="_self">
               <img
                 src="../../public/images/logo.png"
                 alt="Логотип для светлой темы"
               />
             </a>
-          </div>
+          </div> */}
+          <Logo />
           <div className="header__logo _dark">
             <a href="" target="_self">
               <img
@@ -35,32 +37,27 @@ function Header() {
               />
             </a>
           </div>
-          <nav className="header__nav">
-            <button
-              className="header__btn-main-new _hover01"
+          <S.Nav>
+            <Button
+              $size="new"
+              $margin="new"
+              $primary
               id="btnMainNew"
-              onClick={handleClickPopupCard}
+              onClick={() => navigate(RoutesApp.NEWCARD)}
             >
               Создать новую задачу
-            </button>
-
-              <PopNewCard isOpenPopCard ={isOpenPopCard} onClose={() => setIsOpenPopCard(false)}/>
-       
-
-            <button className="button_user" onClick={handleClickPopupUser}>
+            </Button>
+            <HeaderUserButton onClick={handleClickPopupUser}>
               Ivan Ivanov
-            </button>
-
+            </HeaderUserButton>
             <PopUserSet
               setIsOpenPopUser={setIsOpenPopUser}
-              setIsOpenPopExit={setIsOpenPopExit}
               isOpenPopUser={isOpenPopUser}
             />
-          </nav>
-        </div>
-      </div>
-      <PopExit isOpen={isOpenPopExit} onClose={() => setIsOpenPopExit(false)} />
-    </header>
+          </S.Nav>
+        </S.Block>
+      </S.Container>
+    </S.Header>
   );
 }
 
