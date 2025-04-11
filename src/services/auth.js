@@ -5,7 +5,7 @@ export async function signIn(userData) {
    try {
       const data = await axios.post(`${API_URL}/login`, userData, {
          headers: {
-            "Content-Type": "application/json",
+            "Content-Type": "",
          },
       });
       return data.data.user;
@@ -21,7 +21,7 @@ export async function signUp({ name, login, password }) {
          { login, name, password },
          {
          headers: {
-            "Content-Type": "application/json",
+            "Content-Type": "",
          },
       }
    );
