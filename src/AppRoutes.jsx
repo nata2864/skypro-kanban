@@ -32,7 +32,7 @@ function AppRoutes() {
         path={RoutesApp.SIGN_IN}
         element={<SignInPage setIsAuth={setIsAuth} />}
       />
-      <Route path={RoutesApp.SIGN_UP} element={<SignUpPage />} />
+      <Route path={RoutesApp.SIGN_UP} element={<SignUpPage setIsAuth={setIsAuth} />} />
       <Route path={RoutesApp.NOT_FOUND} element={<NotFoundPage />} />
     </Routes>
   );

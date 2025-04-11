@@ -1,16 +1,87 @@
 import { useNavigate } from "react-router-dom";
 import * as S from "./AuthForm.styled";
 import { AuthButton } from "./AuthForm.styled";
-
+import { signUp, signIn } from "../../services/auth";
 import { RoutesApp } from "../../const";
+import { useState } from "react";
 
 function AuthForm({ isSignUp, setIsAuth }) {
   const navigate = useNavigate();
-  const handleLogin = (e) => {
-    e.preventDefault();
-    setIsAuth(true);
-    navigate(RoutesApp.MAIN);
+
+  const [formData, setFormData] = useState({
+    name: "",
+    login: "",
+    password: "",
+  });
+
+  const [errors, setErrors] = useState({
+    name: false,
+    login: false,
+    password: false,
+  });
+
+  const [error, setError] = useState("");
+
+  const validateForm = () => {
+    const requiredFields = ["login", "password", ...(isSignUp ? ["name"] : [])];
+    const newErrors = {};
+    let isValid = true;
+
+    for (const field of requiredFields) {
+      if (!formData[field].trim()) {
+        newErrors[field] = true;
+        isValid = false;
+      }
+    }
+
+    if (!isValid) {
+      setError(
+        isSignUp
+          ? "Введенные вами данные не корректны. Чтобы завершить регистрацию, заполните все поля в форме."
+          : "Введенные вами данные не распознаны. Проверьте свой логин и пароль и повторите попытку входа."
+      );
+    } else {
+      setError("");
+    }
+
+    setErrors(newErrors);
+    return isValid;
   };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+    setErrors({ ...errors, [name]: false });
+    setError("");
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!validateForm()) {
+      return;
+    }
+    try {
+      const data = !isSignUp
+        ? await signIn({ login: formData.login, password: formData.password })
+        : await signUp(formData);
+
+      if (data) {
+        if (isSignUp) {
+          navigate(RoutesApp.SIGN_IN); // <-- перейти на вход после регистрации
+        } else {
+          setIsAuth(true);
+          localStorage.setItem("userInfo", JSON.stringify(data));
+          navigate(RoutesApp.MAIN); // <-- войти, если не регистрация
+        }
+      }
+    } catch (err) {
+      setError(err.message);
+    }
+  };
+
   return (
     <S.Wrapper>
       <S.Container>
@@ -19,29 +90,39 @@ function AuthForm({ isSignUp, setIsAuth }) {
             <div>
               <S.Title>{isSignUp ? "Регистрация" : "Вход"}</S.Title>
             </div>
-            <S.Form id="formLogUp" action="#">
+            <S.Form id="formLogUp" onSubmit={handleSubmit}>
               {isSignUp && (
                 <S.Input
+                  $error={errors.name}
                   type="text"
-                  name="first-name"
+                  name="name"
                   id="first-name"
                   placeholder="Имя"
+                  value={formData.name}
+                  onChange={handleChange}
                 />
               )}
 
               <S.Input
+                $error={errors.login}
                 type="email"
                 name="login"
                 id="loginReg"
                 placeholder="Эл. почта"
+                value={formData.login}
+                onChange={handleChange}
               />
               <S.Input
+                $error={errors.password}
                 type="password"
                 name="password"
                 id="passwordFirst"
                 placeholder="Пароль"
+                value={formData.password}
+                onChange={handleChange}
               />
-              <AuthButton $primary id="SignUpEnter" onClick={handleLogin}>
+              <S.ErrorText>{error}</S.ErrorText>
+              <AuthButton $primary id="SignUpEnter" type="submit">
                 {isSignUp ? "Зарегистрироваться" : "Войти"}
               </AuthButton>
               <S.TextGroep>
