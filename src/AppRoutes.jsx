@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { useState } from "react";
+
 import MainPage from "./pages/MainPage/MainPage.jsx";
 import SignInPage from "./pages/SignInPage/SignInPage.jsx";
 import SignUpPage from "./pages/SignUpPage/SignUpPage.jsx";
@@ -11,28 +11,28 @@ import NotFoundPage from "./pages/NotFoundPage/NotFoundPage.jsx";
 import PrivateRoute from "./PrivateRoute.jsx";
 
 function AppRoutes() {
-  const [isAuth, setIsAuth] = useState(false);
+ 
 
   return (
     <Routes>
-      <Route element={<PrivateRoute isAuth={isAuth} />}>
+      <Route element={<PrivateRoute  />}>
         <Route
           path={RoutesApp.MAIN}
-          element={<MainPage setIsAuth={setIsAuth} />}
+          element={<MainPage />}
         >
           <Route path={RoutesApp.NEWCARD} element={<PopNewCardPage />} />
           <Route path={RoutesApp.BROWSE} element={<PopBrowsePage />} />
           <Route
             path={RoutesApp.EXIT}
-            element={<PopExitPage setIsAuth={setIsAuth} />}
+            element={<PopExitPage  />}
           />
         </Route>
       </Route>
       <Route
         path={RoutesApp.SIGN_IN}
-        element={<SignInPage setIsAuth={setIsAuth} />}
+        element={<SignInPage  />}
       />
-      <Route path={RoutesApp.SIGN_UP} element={<SignUpPage setIsAuth={setIsAuth} />} />
+      <Route path={RoutesApp.SIGN_UP} element={<SignUpPage  />} />
       <Route path={RoutesApp.NOT_FOUND} element={<NotFoundPage />} />
     </Routes>
   );

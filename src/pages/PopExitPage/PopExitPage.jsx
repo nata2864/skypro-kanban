@@ -1,8 +1,8 @@
 import PopExit from "../../components/PopUps/PopExit/PopExit";
 
-function PopExitPage({ setIsAuth }) {
+function PopExitPage() {
   
-  return <PopExit setIsAuth={setIsAuth} />;
+  return <PopExit  />;
 }
 
 export default PopExitPage;
