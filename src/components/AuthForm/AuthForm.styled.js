@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {colorPageTheme}  from "../../const";
+import { colorPageTheme } from "../../const";
 import { Button } from "../Button.styled";
 import { Placeholder } from "../PlaceHolder.styled";
 import { Link } from "react-router-dom";
@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
   height: 100%;
   overflow-x: hidden;
   overflow-y: scroll;
-  background-color:${colorPageTheme.light};
+  background-color: ${colorPageTheme.light};
 `;
 
 export const Container = styled.div`
@@ -70,7 +70,8 @@ export const Input = styled(Placeholder)`
   width: 100%;
   min-width: 100%;
   border-radius: 8px;
-  border: 0.7px solid rgba(148, 166, 190, 0.4);
+  border: 0.7px solid
+    ${({ $error }) => ($error ? "#FF4F4F" : "rgba(148, 166, 190, 0.4)")};
   outline: none;
   padding: 10px 8px;
   margin-bottom: 7px;
@@ -105,13 +106,22 @@ export const TextGroep = styled.div`
   text-align: center;
 `;
 
-
 export const ModalText = styled.p`
   color: rgba(148, 166, 190, 0.4);
   font-size: 14px;
   font-weight: 400;
   line-height: 150%;
   letter-spacing: -0.14px;
+`;
+
+export const ErrorText = styled.p`
+  color: rgba(248, 77, 77, 1);
+  font-family: Arial;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 150%;
+  letter-spacing: 0%;
+  text-align: center;
 `;
 
 export const ModalLink = styled(Link)`
@@ -121,6 +131,4 @@ export const ModalLink = styled(Link)`
   line-height: 150%;
   letter-spacing: -0.14px;
   text-decoration: underline;
-
 `;
-
