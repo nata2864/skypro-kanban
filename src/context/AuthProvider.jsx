@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { AuthContext } from "./AuthContext";
 import { checkLs } from "../utils";
 
-function AuthProvider({ children }){
+export function AuthProvider({ children }){
     const [user, setUser] = useState(checkLs());
 
     useEffect(() => {
@@ -40,4 +40,3 @@ function AuthProvider({ children }){
 
 
 
-export default AuthProvider
