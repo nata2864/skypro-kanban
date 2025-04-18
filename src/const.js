@@ -21,7 +21,7 @@ export const buttonMargins = {
   new: "20px",
 };
 
-export  const theme = {
+export  const categorieColor = {
   "Web Design": {
   background:"#ffe4c2" ,
   color: "#ff6d00"
@@ -39,9 +39,18 @@ grey: {
   color: "#ffffff"
 }
 
+
 }
 
+export const categories = ["Web Design", "Research", "Copywriting"];
+
 export const colorPageTheme ={
+  light:"#EAEEF6",
+  dark:"#EAEEF6",
+  // grey: "#EAEEF6",
+}
+
+export const theme ={
   light:"#EAEEF6",
   dark:"#EAEEF6",
   // grey: "#EAEEF6",
