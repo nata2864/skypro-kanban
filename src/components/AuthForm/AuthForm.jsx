@@ -5,6 +5,7 @@ import { signUp, signIn } from "../../services/auth";
 import { RoutesApp } from "../../const";
 import { useState, useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
+import { checkRequiredFields } from "../../utils";
 
 function AuthForm({ isSignUp }) {
   const navigate = useNavigate();
@@ -25,27 +26,17 @@ function AuthForm({ isSignUp }) {
 
   const validateForm = () => {
     const requiredFields = ["login", "password", ...(isSignUp ? ["name"] : [])];
-    const newErrors = {};
-    let isValid = true;
-
-    for (const field of requiredFields) {
-      if (!formData[field].trim()) {
-        newErrors[field] = true;
-        isValid = false;
-      }
-    }
-
-    if (!isValid) {
-      setError(
-        isSignUp
+    const { isValid, errors } = checkRequiredFields(formData, requiredFields);
+  
+    setErrors(errors);
+    setError(
+      isValid
+        ? ""
+        : isSignUp
           ? "Введенные вами данные не корректны. Чтобы завершить регистрацию, заполните все поля в форме."
           : "Введенные вами данные не распознаны. Проверьте свой логин и пароль и повторите попытку входа."
-      );
-    } else {
-      setError("");
-    }
-
-    setErrors(newErrors);
+    );
+  
     return isValid;
   };
 

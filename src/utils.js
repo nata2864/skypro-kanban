@@ -25,3 +25,18 @@
   }
   
   
+  export   const checkRequiredFields = (formData, requiredFields) => {
+    const errors = {};
+    let isValid = true;
+  
+    for (const field of requiredFields) {
+      if (!formData[field]?.trim()) {
+        errors[field] = true;
+        isValid = false;
+      }
+    }
+  
+    return { isValid, errors };
+  };
+
+  
