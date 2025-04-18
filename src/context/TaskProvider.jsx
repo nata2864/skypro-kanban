@@ -1,6 +1,6 @@
-import { useState, useEffect,useCallback } from "react";
+import { useState, useEffect,useCallback,useContext } from "react";
 import { AuthContext } from "./AuthContext";
-import { fetchTasks} from "../services/api";
+import { fetchTasks,postTask,editTask, deleteTask} from "../services/api";
 import { TaskContext } from "./TaskContext";
 
 
@@ -8,6 +8,7 @@ function TaskProvider({ children }){
    const [loading, setLoading] = useState(true);
    const [tasks, setTasks] = useState([]);
    const [error, setError] = useState("");
+   const { user } = useContext(AuthContext);
  
    useEffect(() => {
      setTimeout(() => {
@@ -43,8 +44,45 @@ function TaskProvider({ children }){
      getTasks();
    }, [getTasks]);
 
+
+   const addNewTask = async ({ task }) => {
+      try {
+         const newTasks = await postTask({ token: user?.token, task });
+         setTasks(newTasks);
+      } catch (error) {
+         console.error("Ошибка добавления задачи", error);
+      }
+   };
+
+   const updateTask = async ({  task, id }) => {
+      try {
+         const newTasks = await editTask({ token: user?.token,id,  task });
+         setTasks(newTasks);
+      } catch (error) {
+         console.error("Ошибка добавления задачи", error);
+      }
+   };
+
+   const deleteTaskById = async ({ id }) => {
+      try {
+        const newTasks = await deleteTask({ token: user?.token, id });
+        setTasks(newTasks);
+      } catch (error) {
+        console.error("Ошибка удаления задачи", error);
+      }
+    };
+
+
+
      return (
-        <TaskContext.Provider value={{ loading, error,tasks }}>
+        <TaskContext.Provider value={{
+         loading,
+         error,
+         tasks,
+         addNewTask,
+         updateTask,
+         deleteTaskById, 
+       }}>
            {children}
         </TaskContext.Provider>
      );
