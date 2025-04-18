@@ -4,7 +4,7 @@ import * as S from "./Column.styled";
 
 function Column({ title, tasks }) {
   const filtertasks = tasks.filter((task) => task.status === title);
-
+console.log({tasks})
   return (
     <S.Column>
       <S.ColumnRow>
