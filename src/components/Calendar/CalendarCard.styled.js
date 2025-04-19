@@ -10,3 +10,18 @@ export const Calendar = styled(DayPicker)`
   --rdp-nav-height: 25px; 
   --rdp-cell-width: 25px;
 `; 
+
+export const CalendarPeriod = styled.p`
+// margin-bottom: 12px;
+ color: #94a6be;
+  font-size: 10px;
+  line-height: 1;
+
+`
+;
+
+export const SelectedData = styled.span`
+ color: #000000;
+
+`
+; 
