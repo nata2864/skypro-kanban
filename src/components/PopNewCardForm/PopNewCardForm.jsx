@@ -1,8 +1,10 @@
 import * as S from "./PopNewCardForm.styled";
-import Calendar from "../Calendar/Calendar";
+// import Calendar from "../Calendar/Calendar";
 import { checkRequiredFields } from "../../utils";
 import { useState } from "react";
 import { Button } from "../Button.styled";
+import CalendarCard from "../Calendar/CalendarCard";
+
 
 function PopNewCardForm() {
 
@@ -84,7 +86,7 @@ function PopNewCardForm() {
             <Button type="submit">Создать</Button>
           </S.FormBlock>
         </S.Form>
-        <Calendar />
+        <CalendarCard />
       </S.FormWrapper>)}
 
       export default PopNewCardForm
