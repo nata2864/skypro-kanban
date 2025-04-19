@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 import Calendar from "../../Calendar/Calendar";
 import * as S from "./PopBrowse.styled";
 // import { CategoriesThemes, CategoriesTitle } from "../../Categories/Categories.styled";
@@ -8,7 +8,7 @@ import {
 } from "../../CategorieButton/CategorieButton.styled";
 
 function PopBrowse() {
-  const { id } = useParams();
+  // const { id } = useParams();
 
   return (
     <S.PopBrowseWrapper id="popBrowse">
