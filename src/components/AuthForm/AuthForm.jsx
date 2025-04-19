@@ -3,11 +3,13 @@ import * as S from "./AuthForm.styled";
 import { AuthButton } from "./AuthForm.styled";
 import { signUp, signIn } from "../../services/auth";
 import { RoutesApp } from "../../const";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
+import { checkRequiredFields } from "../../utils";
 
-function AuthForm({ isSignUp, setIsAuth }) {
+function AuthForm({ isSignUp }) {
   const navigate = useNavigate();
-
+  const { updateUserInfo } = useContext(AuthContext);
   const [formData, setFormData] = useState({
     name: "",
     login: "",
@@ -24,27 +26,17 @@ function AuthForm({ isSignUp, setIsAuth }) {
 
   const validateForm = () => {
     const requiredFields = ["login", "password", ...(isSignUp ? ["name"] : [])];
-    const newErrors = {};
-    let isValid = true;
-
-    for (const field of requiredFields) {
-      if (!formData[field].trim()) {
-        newErrors[field] = true;
-        isValid = false;
-      }
-    }
-
-    if (!isValid) {
-      setError(
-        isSignUp
+    const { isValid, errors } = checkRequiredFields(formData, requiredFields);
+  
+    setErrors(errors);
+    setError(
+      isValid
+        ? ""
+        : isSignUp
           ? "Введенные вами данные не корректны. Чтобы завершить регистрацию, заполните все поля в форме."
           : "Введенные вами данные не распознаны. Проверьте свой логин и пароль и повторите попытку входа."
-      );
-    } else {
-      setError("");
-    }
-
-    setErrors(newErrors);
+    );
+  
     return isValid;
   };
 
@@ -70,11 +62,10 @@ function AuthForm({ isSignUp, setIsAuth }) {
 
       if (data) {
         if (isSignUp) {
-          navigate(RoutesApp.SIGN_IN); // <-- перейти на вход после регистрации
+          navigate(RoutesApp.SIGN_IN); 
         } else {
-          setIsAuth(true);
-          localStorage.setItem("userInfo", JSON.stringify(data));
-          navigate(RoutesApp.MAIN); // <-- войти, если не регистрация
+          updateUserInfo(data);
+          navigate(RoutesApp.MAIN);
         }
       }
     } catch (err) {

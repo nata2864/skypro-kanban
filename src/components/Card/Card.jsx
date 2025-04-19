@@ -1,24 +1,24 @@
-import Categorie from "../Categorie/Categorie";
+// import Categorie from "../Categorie/Categorie";
+// import { CategorieButton } from "../Categorie/CategorieButton.styled";
+import CategorieButton from "../CategorieButton/CategorieButton";
 import * as S from "./Card.styled";
 import { useNavigate } from "react-router-dom";
 
-function Card({task}) {
+function Card({ task }) {
+  const { topic, title, date, _id } = task;
 
-const { topic, title, date, id } = task;
-const navigate = useNavigate();
+  const navigate = useNavigate();
   return (
     <S.CardsItem>
       <S.Card>
         <S.CardGroep>
-       
-          <Categorie topic={topic}/>
-          
-            <S.CardButton onClick={() => navigate(`/card/${id}`)}>
-              <S.Item />
-              <S.Item />
-              <S.Item />
-            </S.CardButton>
-          
+          <CategorieButton topic={topic} />
+
+          <S.CardButton onClick={() => navigate(`/card/${_id}`)}>
+            <S.Item />
+            <S.Item />
+            <S.Item />
+          </S.CardButton>
         </S.CardGroep>
         <S.Content>
           <a href="" target="_blank">
@@ -55,7 +55,7 @@ const navigate = useNavigate();
             </S.Icon>
             <S.DateText>{date}</S.DateText>
           </S.Date>
-        </S.Content >
+        </S.Content>
       </S.Card>
     </S.CardsItem>
   );
