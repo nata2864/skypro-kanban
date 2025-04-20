@@ -75,7 +75,8 @@ function PopNewCardForm() {
             id="textArea"
             placeholder="Введите описание задачи..."
           />
-          {error && <p style={{ color: "red", marginTop: "8px" }}>{error}</p>}
+          
+          {error && <S.PopUpErrorText >{error}</S.PopUpErrorText>}
           <Button type="submit">Создать</Button>
         </S.FormBlock>
       </S.Form>

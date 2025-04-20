@@ -3,8 +3,15 @@ import { Button } from "../../Button.styled";
 import Categories from "../../Categories/Categories";
 import PopNewCardForm from "../../PopNewCardForm/PopNewCardForm";
 import * as S from "./PopNewCard.styled";
+import { useState } from "react";
 
 function PopNewCard({ onClose }) {
+  const [selectedTopic, setSelectedTopic] = useState(null);
+
+  const handleSelectTopic = (topic) => {
+    setSelectedTopic(topic);
+  };
+
   return (
     <S.PopNewCardWrapper>
       <S.PopNewCardContainer>
@@ -19,21 +26,10 @@ function PopNewCard({ onClose }) {
             </S.CloseButton>
             <PopNewCardForm></PopNewCardForm>
 
-            {/* <div className="pop-new-card__categories categories">
-          <p className="categories__p subttl">Категория</p>
-          <div className="categories__themes">
-            <div className="categories__theme _orange _active-category">
-              <p className="_orange">Web Design</p>
-            </div>
-            <div className="categories__theme _green">
-              <p className="_green">Research</p>
-            </div>
-            <div className="categories__theme _purple">
-              <p className="_purple">Copywriting</p>
-            </div>
-          </div>
-        </div> */}
-            <Categories />
+            <Categories
+             selectedTopic={selectedTopic}
+             onSelectTopic={handleSelectTopic}
+            />
             <Button $primary $float $size="newTask" id="btnCreate">
               Создать задачу
             </Button>

@@ -1,6 +1,5 @@
 import styled from "styled-components";
-
-
+import { ErrorText } from "../AuthForm/AuthForm.styled";
 import {Placeholder} from "../PlaceHolder.styled"
 
 export const FormWrapper = styled.div`
@@ -51,3 +50,5 @@ export const TextArea = styled(BaseInput).attrs({ as: 'textarea' })`
   margin-top: 14px;
   height: 200px;
 `;
+
+export const PopUpErrorText = styled(ErrorText)``;
