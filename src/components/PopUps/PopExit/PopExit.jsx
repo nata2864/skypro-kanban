@@ -21,27 +21,27 @@ function PopExit() {
           <S.Title>
             <h2>Выйти из аккаунта?</h2>
           </S.Title>
-          <S.Form id="formExit">
+          {/* <S.Form id="formExit"> */}
           <S.FormGroup>
-              <Button
+              <S.PopExitButtonYes 
                 $primary
                 $size="exit"
-                $margin="exit"
+                // $margin="exit"
                 onClick={handleLogout}
               >
                 Да, выйти
-              </Button>
-              <Button
-                $size="exit"
+              </S.PopExitButtonYes>
+              <S.PopExitButton
+                // $size="exit"
                 type="button"
                 onClick={() => {
                   navigate(RoutesApp.MAIN);
                 }}
               >
                 Нет, остаться
-              </Button>
+              </S.PopExitButton>
             </S.FormGroup>
-          </S.Form>
+          {/* </S.Form> */}
         </S.Block>
       </S.Container>
     </S.PopExit>

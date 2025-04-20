@@ -1,7 +1,8 @@
 import styled from "styled-components";
+import { Button } from "../../Button.styled";
 
 export const PopExit = styled.div`
-//   display: none;
+  //   display: none;
   width: 100%;
   height: 100%;
   min-width: 320px;
@@ -47,11 +48,28 @@ export const Title = styled.div`
   }
 `;
 
-export const Form = styled.form``;
+export const PopExitButton = styled(Button)`
+  line-height: 21px;
+  width: 153px;
+  @media only screen and (max-width: 375px) {
+    height: 40px;
+  }
+`;
+
+export const PopExitButtonYes = styled(PopExitButton)`
+  margin-right: 10px;
+  @media only screen and (max-width: 375px) {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+`;
 
 export const FormGroup = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  @media only screen and (max-width: 375px){
+    display: block;
+  }
 `;

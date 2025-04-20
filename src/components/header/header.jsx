@@ -2,8 +2,11 @@ import { useState } from "react";
 import { RoutesApp } from "../../const";
 import PopUserSet from "../PopUps/PopUserSet/PopUserSet";
 import { useNavigate } from "react-router-dom";
-import { Button } from "../Button.styled";
-import { HeaderUserButton } from "./HeaderUserButton.styled";
+// import { Button } from "../Button.styled";
+import {
+  HeaderUserButton,
+  HeaderPopupNewCardButton,
+} from "./HeaderUserButton.styled";
 import Logo from "../Logo/Logo";
 import * as S from "./Header.styled";
 
@@ -38,15 +41,12 @@ function Header() {
             </a>
           </div>
           <S.Nav>
-            <Button
-              $size="new"
-              $margin="new"
+            <HeaderPopupNewCardButton
               $primary
-              id="btnMainNew"
               onClick={() => navigate(RoutesApp.NEWCARD)}
             >
               Создать новую задачу
-            </Button>
+            </HeaderPopupNewCardButton>
             <HeaderUserButton onClick={handleClickPopupUser}>
               Ivan Ivanov
             </HeaderUserButton>

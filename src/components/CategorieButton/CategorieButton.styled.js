@@ -24,6 +24,9 @@ export const CategoriePopUpButton = styled(CategorieButton)`
   border-radius: 24px;
   margin-right: 7px;
   opacity: ${({ $isActive }) => ($isActive ? 1 : 0.4)};
+  @media screen and (max-width: 495px){
+   display: none;
+  }
 `;
 
 export const CategoriePopUpButtonText = styled(CategorieText)`

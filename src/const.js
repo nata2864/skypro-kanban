@@ -8,16 +8,19 @@ export const RoutesApp = {
   EXIT: "/exit",
 };
 
-export const buttonSizes = {
-  user: "72px",
-  exit: "153px",
-  new: "178px",
-  newTask: "132px",
-};
+export const statusTitles = [
+  "Без статуса",
+  "Нужно сделать",
+  "В работе",
+  "Тестирование",
+  "Готово",
+];
 
-export const buttonMargins = {
-  exit: "10px",
-  new: "20px",
+export const buttonSizes = {
+  // user: "72px",
+  // exit: "153px",
+  // new: "178px",
+  newTask: "132px",
 };
 
 export const categorieColor = {

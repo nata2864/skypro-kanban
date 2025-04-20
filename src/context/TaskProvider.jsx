@@ -46,10 +46,16 @@ function TaskProvider({ children }){
 
 
    const addNewTask = async ({ task }) => {
-      try {
-         const newTasks = await postTask({ token: user?.token, task });
+      // try {
+      //    const newTasks = await postTask({ token: user?.token, task });
+      //    setTasks(newTasks);
+      // } 
+       try {
+         const newTasks = await postTask({ token: "bgc0b8awbwas6g5g5k5o5s5w606g37w3cc3bo3b83k39s3co3c83c03ck", task });
          setTasks(newTasks);
-      } catch (error) {
+      } 
+      
+      catch (error) {
          console.error("Ошибка добавления задачи", error);
       }
    };

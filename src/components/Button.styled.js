@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import { buttonSizes, buttonMargins } from "../const";
+import { buttonSizes} from "../const";
 
 export const Button = styled.button`
   height: 30px;
-   width: ${({ $size }) => buttonSizes[$size] || "100%"};
+   width: ${({ $size }) => buttonSizes[$size] || "auto"};
   background-color: ${(props) => (props.$primary ? "#565eef" : "transparent")};
   color: ${(props) => (props.$primary ? "#FFFFFF" : "#565eef")};
   float: ${(props) => (props.$float ? "right" : "none")};
@@ -17,7 +17,7 @@ export const Button = styled.button`
   cursor: pointer;
   outline: none;
 
-   margin-right: ${({ $margin }) => buttonMargins[$margin] || 0};
+
 
 
    &:disabled {
