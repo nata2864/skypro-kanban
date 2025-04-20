@@ -47,41 +47,41 @@ function PopNewCardForm() {
   };
 
   return (
-    <S.FormWrapper>
-      <S.Form
-        onSubmit={handleSubmit}
-        id="formNewCard"
-        //   action="#"
-      >
-        <S.FormBlock>
-          <S.Label htmlFor="formTitle">Название задачи</S.Label>
-          <S.Input
-            name="task"
-            $error={errors.task}
-            value={formData.task}
-            onChange={handleChange}
-            type="text"
-            id="formTitle"
-            placeholder="Введите название задачи..."
-          />
-        </S.FormBlock>
-        <S.FormBlock>
-          <S.Label htmlFor="textArea">Описание задачи</S.Label>
-          <S.TextArea
-            name="description"
-            $error={errors.description}
-            value={formData.description}
-            onChange={handleChange}
-            id="textArea"
-            placeholder="Введите описание задачи..."
-          />
-          
-          {error && <S.PopUpErrorText >{error}</S.PopUpErrorText>}
-          <Button type="submit">Создать</Button>
-        </S.FormBlock>
-      </S.Form>
-      <CalendarCard />
-    </S.FormWrapper>
+    // <S.FormWrapper>
+    <S.Form
+      onSubmit={handleSubmit}
+      id="formNewCard"
+      //   action="#"
+    >
+      <S.FormBlock>
+        <S.Label htmlFor="formTitle">Название задачи</S.Label>
+        <S.Input
+          name="task"
+          $error={errors.task}
+          value={formData.task}
+          onChange={handleChange}
+          type="text"
+          id="formTitle"
+          placeholder="Введите название задачи..."
+        />
+      </S.FormBlock>
+      <S.FormBlock>
+        <S.Label htmlFor="textArea">Описание задачи</S.Label>
+        <S.TextArea
+          name="description"
+          $error={errors.description}
+          value={formData.description}
+          onChange={handleChange}
+          id="textArea"
+          placeholder="Введите описание задачи..."
+        />
+
+        {error && <S.PopUpErrorText>{error}</S.PopUpErrorText>}
+        <Button type="submit">Создать</Button>
+      </S.FormBlock>
+    </S.Form>
+    // <CalendarCard />
+    // </S.FormWrapper>
   );
 }
 

@@ -1,19 +1,15 @@
-import React, { useState } from 'react';
-import { Calendar, SelectedData,CalendarPeriod } from './CalendarCard.styled';
-import { format } from 'date-fns';
-import { ru } from 'date-fns/locale';
+import React from "react";
+import { Calendar, SelectedData, CalendarPeriod } from "./CalendarCard.styled";
+import { format } from "date-fns";
+import { ru } from "date-fns/locale";
 
-
-const CalendarCard = () => {
- 
-  const [selected, setSelected] = useState(new Date());
-
+const CalendarCard = ({ selected, onSelect }) => {
   return (
     <div>
       <Calendar
         mode="single"
         selected={selected}
-        onSelect={setSelected}
+        onSelect={onSelect}
         footer={
           selected ? (
             <CalendarPeriod>
@@ -29,8 +25,6 @@ const CalendarCard = () => {
       />
     </div>
   );
-         
- 
 };
 
-export default CalendarCard ;
+export default CalendarCard;

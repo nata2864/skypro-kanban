@@ -2,11 +2,7 @@ import styled from "styled-components";
 import { ErrorText } from "../AuthForm/AuthForm.styled";
 import {Placeholder} from "../PlaceHolder.styled"
 
-export const FormWrapper = styled.div`
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-`;
+
 
 export const Form = styled.form`
   max-width: 370px;

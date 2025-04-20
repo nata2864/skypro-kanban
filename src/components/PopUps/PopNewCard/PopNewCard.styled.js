@@ -78,3 +78,9 @@ export const CloseButton = styled.button`
     color: #000;
   }
 `;
+
+export const FormWrapper = styled.div`
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+`;

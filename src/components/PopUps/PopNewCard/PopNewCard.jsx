@@ -1,16 +1,22 @@
 import { Button } from "../../Button.styled";
+import CalendarCard from "../../Calendar/CalendarCard";
 // import Calendar from "../../Calendar/Calendar";
 import Categories from "../../Categories/Categories";
 import PopNewCardForm from "../../PopNewCardForm/PopNewCardForm";
 import * as S from "./PopNewCard.styled";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { RoutesApp } from "../../../const";
 
-function PopNewCard({ onClose }) {
+function PopNewCard() {
   const [selectedTopic, setSelectedTopic] = useState(null);
+  const [selectedData, setSelectedData] = useState(new Date());
 
   const handleSelectTopic = (topic) => {
     setSelectedTopic(topic);
   };
+
+  const navigate = useNavigate();
 
   return (
     <S.PopNewCardWrapper>
@@ -20,15 +26,25 @@ function PopNewCard({ onClose }) {
             {/* <div className="pop-new-card__block">
           <div className="pop-new-card__content"> */}
             <S.Title>Создание задачи</S.Title>
-            {/* Не срабатывает тк убрала стейт из Хидер */}
-            <S.CloseButton className="button_close" onClick={onClose}>
+
+            <S.CloseButton
+              onClick={() => {
+                navigate(RoutesApp.MAIN);
+              }}
+            >
               ✖
             </S.CloseButton>
-            <PopNewCardForm></PopNewCardForm>
+            <S.FormWrapper>
+              <PopNewCardForm />
+              <CalendarCard
+                selected={selectedData}
+                onSelect={setSelectedData}
+              />
+            </S.FormWrapper>
 
             <Categories
-             selectedTopic={selectedTopic}
-             onSelectTopic={handleSelectTopic}
+              selectedTopic={selectedTopic}
+              onSelectTopic={handleSelectTopic}
             />
             <Button $primary $float $size="newTask" id="btnCreate">
               Создать задачу
