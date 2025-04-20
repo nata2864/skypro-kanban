@@ -8,6 +8,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { RoutesApp } from "../../../const";
 import { checkRequiredFields } from "../../../utils";
+// import { PopUpErrorText } from "../../PopNewCardForm/PopNewCardForm.styled";
 
 function PopNewCard() {
   const [selectedTopic, setSelectedTopic] = useState(null);
@@ -15,6 +16,7 @@ function PopNewCard() {
 
   const handleSelectTopic = (topic) => {
     setSelectedTopic(topic);
+    setCategoryError(false)
   };
 
   const navigate = useNavigate();
@@ -31,6 +33,7 @@ function PopNewCard() {
   });
 
   const [error, setError] = useState("");
+  const [categoryError, setCategoryError] = useState(false);
 
   const validateForm = () => {
     const requiredFields = ["task", "description"];
@@ -52,11 +55,18 @@ function PopNewCard() {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!validateForm()) {
+
+    const isFormValid = validateForm();
+    const isCategorySelected = selectedTopic !== null;
+
+    setCategoryError(!isCategorySelected);
+
+    if (!isFormValid || !isCategorySelected) {
       return;
-    } else {
-      console.log("Valid");
     }
+  
+    console.log("Valid");
+   
   };
 
   return (
@@ -85,11 +95,13 @@ function PopNewCard() {
                 onSelect={setSelectedData}
               />
             </S.FormWrapper>
-
+         
             <Categories
               selectedTopic={selectedTopic}
               onSelectTopic={handleSelectTopic}
+              categoryError ={categoryError}
             />
+             
             <Button type={"submit"} $primary $float $size="newTask" id="btnCreate">
               Создать задачу
             </Button>
