@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
-// import { DayPicker } from "react-day-picker";
-// import "react-day-picker/style.css";
 import { Calendar, SelectedData,CalendarPeriod } from './CalendarCard.styled';
-// import { Calendar } from './CalendarCard.styled';
 import { format } from 'date-fns';
 import { ru } from 'date-fns/locale';
 
@@ -18,13 +15,16 @@ const CalendarCard = () => {
         selected={selected}
         onSelect={setSelected}
         footer={
-          selected
-            ? <CalendarPeriod>Срок исполнения: 
-              <SelectedData> {format(selected, "dd.MM.yy", { locale: ru })}</SelectedData>
-             
-            
+          selected ? (
+            <CalendarPeriod>
+              Срок исполнения:
+              <SelectedData>
+                {format(selected, "dd.MM.yy", { locale: ru })}
+              </SelectedData>
             </CalendarPeriod>
-            : "Выберите срок исполнения"
+          ) : (
+            <CalendarPeriod>Выберите срок исполнения</CalendarPeriod>
+          )
         }
       />
     </div>
