@@ -1,58 +1,52 @@
 import * as S from "./PopNewCardForm.styled";
-// import Calendar from "../Calendar/Calendar";
-import { checkRequiredFields } from "../../utils";
-import { useState } from "react";
-import { Button } from "../Button.styled";
-import CalendarCard from "../Calendar/CalendarCard";
 
-function PopNewCardForm() {
-  const [formData, setFormData] = useState({
-    task: "",
-    description: "",
-  });
+// import { checkRequiredFields } from "../../utils";
+// import { useState } from "react";
 
-  const [errors, setErrors] = useState({
-    task: false,
-    description: false,
-    password: false,
-  });
 
-  const [error, setError] = useState("");
+function PopNewCardForm({handleChange,error,formData,errors}) {
+  // const [formData, setFormData] = useState({
+  //   task: "",
+  //   description: "",
+  // });
 
-  const validateForm = () => {
-    const requiredFields = ["task", "description"];
-    const { isValid, errors } = checkRequiredFields(formData, requiredFields);
+  // const [errors, setErrors] = useState({
+  //   task: false,
+  //   description: false,
+  //   password: false,
+  // });
 
-    setErrors(errors);
-    setError(isValid ? "" : "Введите данные");
-    return isValid;
-  };
+  // const [error, setError] = useState("");
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-    setErrors({ ...errors, [name]: false });
-    setError("");
-  };
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!validateForm()) {
-      return;
-    } else {
-      console.log("Valid");
-    }
-  };
+  // const validateForm = () => {
+  //   const requiredFields = ["task", "description"];
+  //   const { isValid, errors } = checkRequiredFields(formData, requiredFields);
+
+  //   setErrors(errors);
+  //   setError(isValid ? "" : "Введите данные");
+  //   return isValid;
+  // };
+
+  // const handleChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setFormData({
+  //     ...formData,
+  //     [name]: value,
+  //   });
+  //   setErrors({ ...errors, [name]: false });
+  //   setError("");
+  // };
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   if (!validateForm()) {
+  //     return;
+  //   } else {
+  //     console.log("Valid");
+  //   }
+  // };
 
   return (
-    // <S.FormWrapper>
-    <S.Form
-      onSubmit={handleSubmit}
-      id="formNewCard"
-      //   action="#"
-    >
+    <S.Form >
       <S.FormBlock>
         <S.Label htmlFor="formTitle">Название задачи</S.Label>
         <S.Input
@@ -77,11 +71,8 @@ function PopNewCardForm() {
         />
 
         {error && <S.PopUpErrorText>{error}</S.PopUpErrorText>}
-        <Button type="submit">Создать</Button>
       </S.FormBlock>
     </S.Form>
-    // <CalendarCard />
-    // </S.FormWrapper>
   );
 }
 
