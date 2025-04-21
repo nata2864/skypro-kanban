@@ -3,7 +3,7 @@ import {
   CategoriePopUpButton,
   CategoriePopUpButtonText,
 } from "../CategorieButton/CategorieButton.styled";
-// import { PopUpErrorText } from "../PopNewCardForm/PopNewCardForm.styled";
+
 
 function Categories({ selectedTopic, onSelectTopic }) {
   const categories = ["Web Design", "Research", "Copywriting"];
