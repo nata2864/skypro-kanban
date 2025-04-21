@@ -2,6 +2,8 @@ import { useState, useEffect,useCallback,useContext } from "react";
 import { AuthContext } from "./AuthContext";
 import { fetchTasks,postTask,editTask, deleteTask} from "../services/api";
 import { TaskContext } from "./TaskContext";
+import { textValidationErrors } from "../const";
+import { toast } from "react-toastify";
 
 
 function TaskProvider({ children }){
@@ -56,7 +58,8 @@ function TaskProvider({ children }){
       } 
       
       catch (error) {
-         console.error("Ошибка добавления задачи", error);
+        toast.error(textValidationErrors.addNewTaskError);
+         console.error(textValidationErrors.addNewTaskError, error);
       }
    };
 
@@ -65,7 +68,8 @@ function TaskProvider({ children }){
          const newTasks = await editTask({ token: user?.token,id,  task });
          setTasks(newTasks);
       } catch (error) {
-         console.error("Ошибка добавления задачи", error);
+        toast.error(textValidationErrors.updateTaskError);
+        console.error(textValidationErrors.updateTaskError, error);
       }
    };
 
@@ -74,7 +78,8 @@ function TaskProvider({ children }){
         const newTasks = await deleteTask({ token: user?.token, id });
         setTasks(newTasks);
       } catch (error) {
-        console.error("Ошибка удаления задачи", error);
+        toast.error(textValidationErrors.deleteTaskError);
+        console.error(textValidationErrors.deleteTaskError, error);
       }
     };
 

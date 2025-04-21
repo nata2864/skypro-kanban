@@ -11,11 +11,19 @@ import { useDateValidation } from "../../../hooks/useDateValidation";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { RoutesApp } from "../../../const";
-import {useStatusValidation} from "../../../hooks/useStatusValidation "
+import { useStatusValidation } from "../../../hooks/useStatusValidation ";
+import { useParams } from "react-router-dom";
+import { TaskContext } from "../../../context/TaskContext";
+import { useContext } from "react";
 
 function PopBrowse() {
-  // const { id } = useParams();
+  const { id } = useParams();
+
+  const { tasks } = useContext(TaskContext);
   const navigate = useNavigate();
+
+  const selectedTask = tasks.find((task) => task._id === id);
+  console.log(selectedTask);
 
   const [selectedStatus, setSelectedStatus] = useState(null);
   const [selectedDate, setSelectedDate] = useState(null);
@@ -61,23 +69,30 @@ function PopBrowse() {
         <S.PopBrowseBlock>
           <S.PopBrowseContent as="form" onSubmit={handleSubmit}>
             <S.PopBrowseTopBlock>
-              <S.PopBrowseTitle>Название задачи</S.PopBrowseTitle>
-              <CategoriePopUpButton>
-                <CategoriePopUpButtonText>Web Design</CategoriePopUpButtonText>
+              <S.PopBrowseTitle>{selectedTask?.title}</S.PopBrowseTitle>
+              <CategoriePopUpButton $topic={selectedTask?.topic} $isActive>
+                <CategoriePopUpButtonText $topic={selectedTask?.topic}>
+                  {selectedTask?.topic}
+                </CategoriePopUpButtonText>
               </CategoriePopUpButton>
             </S.PopBrowseTopBlock>
             <S.PopBrowseStatus>
               <S.PopBrowseStatusTitle>Статус</S.PopBrowseStatusTitle>
               <S.StatusThemes>
-                {statusTitles.map((item) => (
-                  <S.StatusTheme key={item}
-                  $isActive={item === selectedStatus}
-                  onClick={() => handleSelectStatus(item)}
-                  error={statusError}>
-                    
+                <S.StatusTheme $isActiveStatus>
+             
+                  <S.StatusThemeTitle>{selectedTask?.status}</S.StatusThemeTitle>
+                </S.StatusTheme>
+                {/* {statusTitles.map((item) => (
+                  <S.StatusTheme
+                    key={item}
+                    $isActive={item === selectedStatus}
+                    onClick={() => handleSelectStatus(item)}
+                    error={statusError}
+                  >
                     <S.StatusThemeTitle>{item}</S.StatusThemeTitle>
                   </S.StatusTheme>
-                ))}
+                ))} */}
               </S.StatusThemes>
             </S.PopBrowseStatus>
             <S.PopBrowseWrap>
@@ -94,15 +109,21 @@ function PopBrowse() {
                 </S.FormBrowseBlock>
               </S.PopBrowseForm>
 
-              <CalendarCard  selected={selectedDate}
+              <CalendarCard
+                selected={selectedDate}
                 onSelectDate={setSelectedDate}
-                error={dateError}/>
+                error={dateError}
+              />
             </S.PopBrowseWrap>
 
             <S.PopBrowseBtnBrowse>
               <S.BtnGroep>
-                <S.PopBrowseButton type="button">Редактировать задачу</S.PopBrowseButton>
-                <S.PopBrowseButton type="button">Удалить задачу</S.PopBrowseButton>
+                <S.PopBrowseButton type="button">
+                  Редактировать задачу
+                </S.PopBrowseButton>
+                <S.PopBrowseButton type="button">
+                  Удалить задачу
+                </S.PopBrowseButton>
               </S.BtnGroep>
               <S.PopBrowseButton
                 $primary
@@ -117,7 +138,9 @@ function PopBrowse() {
               <S.BtnGroep>
                 <S.PopBrowseButton type="submit">Сохранить</S.PopBrowseButton>
                 <S.PopBrowseButton type="button">Отменить</S.PopBrowseButton>
-                <S.PopBrowseButton type="button">Удалить задачу</S.PopBrowseButton>
+                <S.PopBrowseButton type="button">
+                  Удалить задачу
+                </S.PopBrowseButton>
               </S.BtnGroep>
               <S.PopBrowseButton
                 $primary

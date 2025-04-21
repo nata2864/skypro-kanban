@@ -3,6 +3,7 @@ import { Button } from "../../Button.styled";
 import { Placeholder } from "../../PlaceHolder.styled";
 import { PopNewCardWrapper,PopNewCardContainer,PopNewCardBlock, FormWrapper  } from "../PopNewCard/PopNewCard.styled";
 import { Form,FormLabel } from "../../PopNewCardForm/PopNewCardForm.styled";
+import { categorieColor } from "../../../const";
 
 export const PopBrowseWrapper = styled(PopNewCardWrapper )`
   z-index: 7;
@@ -87,11 +88,14 @@ export const StatusThemes = styled.div`
 
 export const StatusTheme = styled.div`
   border-radius: 24px;
-  border: 0.7px solid rgba(148, 166, 190, 0.4);
-  color: #94a6be;
+  border: 0.7px solid rgba(0, 62, 144, 0.4);
+background: ${(props) => (props.$isActiveStatus ? categorieColor.grey.background : "transparent")};
+
+  color:${(props) => (props.$isActiveStatus ? categorieColor.grey.color: "#94a6be")};;
   padding: 11px 14px 10px;
   margin-right: 7px;
   margin-bottom: 7px;
+  border: ${(props) => (props.$isActiveStatus ? "none" : " 0.7px solid rgba(0, 62, 144, 0.4)")};
 `;
 
 export const StatusThemeTitle = styled.p`
