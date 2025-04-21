@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { checkRequiredFields } from "../utils";
+import { textValidationErrors } from "../const";
 
 export const useFormValidation = (formData, requiredFields) => {
   const [formError, setFormError] = useState(false);
@@ -11,7 +12,7 @@ export const useFormValidation = (formData, requiredFields) => {
     const { isValid } = checkRequiredFields(formData, requiredFields);
 
     if (!isValid) {
-      toast.error("Пожалуйста, заполните все обязательные поля");
+      toast.error(textValidationErrors.formError);
       setFormError(true);
     } else {
       setFormError(false);

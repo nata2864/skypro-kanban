@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
+import { textValidationErrors } from "../const";
 
 export const useCategoryValidation = () => {
   const [categoryError, setCategoryError] = useState(false);
@@ -8,7 +9,7 @@ export const useCategoryValidation = () => {
     const isValid = selectedTopic !== null;
 
     if (!isValid) {
-      toast.error("Пожалуйста, выберите категорию");
+      toast.error(textValidationErrors.categoryError);
       setCategoryError(true);
     } else {
       setCategoryError(false);

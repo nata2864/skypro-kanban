@@ -31,8 +31,6 @@ function PopNewCard() {
     setSelectedTopic(topic);
   };
 
- 
-
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -41,7 +39,6 @@ function PopNewCard() {
       ...formData,
       [name]: value,
     });
-
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -75,7 +72,6 @@ function PopNewCard() {
               <PopNewCardForm
                 handleChange={handleChange}
                 formData={formData}
-                // errors={errors}
                 error={formError}
               />
               <CalendarCard

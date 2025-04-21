@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
+import { textValidationErrors } from "../const";
 
 export const useStatusValidation = () => {
   const [statusError, setStatusError] = useState(false);
@@ -8,7 +9,7 @@ export const useStatusValidation = () => {
     const isValid = selectedStatus !== null;
 
     if (!isValid) {
-      toast.error("Пожалуйста, выберите статус");
+      toast.error(textValidationErrors.statusError);
       setStatusError(true);
     } else {
       setStatusError(false);
