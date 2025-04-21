@@ -168,6 +168,7 @@ export const PopBrowseButton = styled(Button)`
   margin-bottom: 10px;
   padding: 0 14px;
   margin-right: 8px;
+  width: auto; 
   @media screen and (max-width: 495px) {
     width: 100%;
     height: 40px;
