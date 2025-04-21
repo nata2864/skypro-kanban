@@ -5,7 +5,7 @@ export const useCategoryValidation = () => {
   const [categoryError, setCategoryError] = useState(false);
 
   const validateCategory = (selectedTopic) => {
-    const isValid = !!selectedTopic;
+    const isValid = selectedTopic !== null;
 
     if (!isValid) {
       toast.error("Пожалуйста, выберите категорию");

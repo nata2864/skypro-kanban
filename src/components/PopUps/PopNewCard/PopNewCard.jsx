@@ -10,18 +10,21 @@ import { RoutesApp } from "../../../const";
 import { checkRequiredFields } from "../../../utils";
 import { toast } from "react-toastify";
 import { useCategoryValidation } from "../../../hooks/useCategoryValidation";
+import { useDateValidation } from "../../../hooks/useDateValidation";
 
 function PopNewCard() {
   const [selectedTopic, setSelectedTopic] = useState(null);
-  const { categoryError, validateCategory } = useCategoryValidation();
   const [selectedData, setSelectedData] = useState(null);
   const [formData, setFormData] = useState({
     task: "",
     description: "",
   });
 
+  const { categoryError, validateCategory } = useCategoryValidation();
+  const { dateError, validateDate } = useDateValidation();
+
   const [error, setError] = useState("");
-  // const [categoryError, setCategoryError] = useState(false);
+ 
 
   const handleSelectTopic = (topic) => {
     setSelectedTopic(topic);
@@ -55,8 +58,10 @@ function PopNewCard() {
 
     const isFormValid = validateForm();
     const isCategoryValid = validateCategory(selectedTopic);
+    const isDateValid = validateDate(selectedData);
 
-    if (!isFormValid || isCategoryValid) {
+
+    if (!isFormValid || !isCategoryValid || !isDateValid) {
       return;
     }
   
@@ -88,6 +93,7 @@ function PopNewCard() {
               <CalendarCard
                 selected={selectedData}
                 onSelect={setSelectedData}
+                dateError={dateError}
               />
             </S.FormWrapper>
          
