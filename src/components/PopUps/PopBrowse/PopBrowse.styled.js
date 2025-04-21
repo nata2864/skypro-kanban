@@ -1,63 +1,20 @@
 import styled from "styled-components";
 import { Button } from "../../Button.styled";
 import { Placeholder } from "../../PlaceHolder.styled";
+import { PopNewCardWrapper,PopNewCardContainer,PopNewCardBlock, FormWrapper  } from "../PopNewCard/PopNewCard.styled";
+import { Form,FormLabel } from "../../PopNewCardForm/PopNewCardForm.styled";
 
-export const PopBrowseWrapper = styled.div`
-  //   display: none;
-  width: 100%;
-  height: 100%;
-  min-width: 375px;
-  min-height: 100vh;
-  position: absolute;
-  top: 0;
-  left: 0;
+export const PopBrowseWrapper = styled(PopNewCardWrapper ).div`
   z-index: 7;
-  @media screen and (max-width: 660px) {
-    top: 70px;
-  }
 `;
 
-export const PopBrowseContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  min-height: 100vh;
-  padding: 0 16px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0, 0, 0, 0.4);
-  @media screen and (max-width: 660px) {
-    padding: 0;
-    justify-content: flex-start;
-  }
+export const PopBrowseContainer = styled(PopNewCardContainer )`
 `;
 
-export const PopBrowseBlock = styled.div`
-  display: block;
-  margin: 0 auto;
-  background-color: #ffffff;
-  max-width: 630px;
-  width: 100%;
-  padding: 40px 30px 38px;
-  border-radius: 10px;
-  border: 0.7px solid #d4dbe5;
-  position: relative;
-  @media screen and (max-width: 660px) {
-    border-radius: 0;
-  }
-  @media screen and (max-width: 495px) {
-    padding: 20px 16px 32px;
-  }
+export const PopBrowseBlock = styled(PopNewCardBlock)`
 `;
 
 export const PopBrowseContent = styled.div`
-  display: block;
-  text-align: left;
-    @media screen and (max-width: 495px){
-   display: none;
-   
-  }
 `;
 
 export const PopBrowseTopBlock = styled.div`
@@ -74,20 +31,15 @@ export const PopBrowseTitle = styled.h3`
   line-height: 24px;
 `;
 
-export const PopBrowseWrap = styled.div`
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  @media screen and (max-width: 660px) {
-    display: block;
-  }
+export const PopBrowseWrap = styled(FormWrapper)`
 `;
 
-export const PopBrowseForm = styled.form`
-  max-width: 370px;
-  width: 100%;
-  display: block;
-  margin-bottom: 20px;
+export const PopBrowseForm = styled(Form )`
+
+`;
+
+export const PopBrowseFormLabel = styled(FormLabel)`
+
 `;
 
 export const FormBrowseBlock = styled.div`

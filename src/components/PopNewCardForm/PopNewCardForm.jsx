@@ -4,7 +4,7 @@ function PopNewCardForm({ handleChange, formData }) {
   return (
     <S.Form>
       <S.FormBlock>
-        <S.Label htmlFor="formTitle">Название задачи</S.Label>
+        <S.FormLabel htmlFor="formTitle">Название задачи</S.FormLabel>
         <S.Input
           name="task"
           value={formData.task}
@@ -15,12 +15,12 @@ function PopNewCardForm({ handleChange, formData }) {
         />
       </S.FormBlock>
       <S.FormBlock>
-        <S.Label htmlFor="textArea">Описание задачи</S.Label>
+        <S.FormLabel htmlFor="textArea">Описание задачи</S.FormLabel>
         <S.TextArea
           name="description"
           value={formData.description}
           onChange={handleChange}
-          id="textArea"
+       
           placeholder="Введите описание задачи..."
         />
       </S.FormBlock>

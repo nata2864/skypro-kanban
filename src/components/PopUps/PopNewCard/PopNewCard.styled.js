@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 
 export const PopNewCardWrapper = styled.div`
-  // display: ${({ isOpenPopCard }) => (isOpenPopCard ? "block" : "none")};
+;
   width: 100%;
   min-width: 375px;
   height: 100%;
