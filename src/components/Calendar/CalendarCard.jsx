@@ -3,13 +3,13 @@ import { Calendar, SelectedData, CalendarPeriod } from "./CalendarCard.styled";
 import { format } from "date-fns";
 import { ru } from "date-fns/locale";
 
-const CalendarCard = ({ selected, onSelect }) => {
+const CalendarCard = ({ selected, onSelectDate }) => {
   return (
     <div>
       <Calendar
         mode="single"
         selected={selected}
-        onSelect={onSelect}
+        onSelect={onSelectDate}
         footer={
           selected ? (
             <CalendarPeriod>

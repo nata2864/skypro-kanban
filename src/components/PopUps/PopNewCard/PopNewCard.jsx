@@ -7,14 +7,13 @@ import * as S from "./PopNewCard.styled";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { RoutesApp } from "../../../const";
-import { checkRequiredFields } from "../../../utils";
-import { toast } from "react-toastify";
 import { useCategoryValidation } from "../../../hooks/useCategoryValidation";
 import { useDateValidation } from "../../../hooks/useDateValidation";
+import { useFormValidation } from "../../../hooks/useFormValidation";
 
 function PopNewCard() {
   const [selectedTopic, setSelectedTopic] = useState(null);
-  const [selectedData, setSelectedData] = useState(null);
+  const [selectedDate, setSelectedDate] = useState(null);
   const [formData, setFormData] = useState({
     task: "",
     description: "",
@@ -23,26 +22,18 @@ function PopNewCard() {
   const { categoryError, validateCategory } = useCategoryValidation();
   const { dateError, validateDate } = useDateValidation();
 
-  const [error, setError] = useState("");
- 
+  const { formError, validateForm } = useFormValidation(formData, [
+    "task",
+    "description",
+  ]);
 
   const handleSelectTopic = (topic) => {
     setSelectedTopic(topic);
-    // setCategoryError(false)
   };
+
+ 
 
   const navigate = useNavigate();
-
-
-
-  const validateForm = () => {
-    const requiredFields = ["task", "description"];
-    const { isValid } = checkRequiredFields(formData, requiredFields);
-
-
-    setError(isValid ? "" : toast.error("Введите данные"));
-    return isValid;
-  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -50,29 +41,26 @@ function PopNewCard() {
       ...formData,
       [name]: value,
     });
-  
-    setError("");
+
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const isFormValid = validateForm();
     const isCategoryValid = validateCategory(selectedTopic);
-    const isDateValid = validateDate(selectedData);
-
+    const isDateValid = validateDate(selectedDate);
 
     if (!isFormValid || !isCategoryValid || !isDateValid) {
       return;
     }
-  
+
     console.log("Valid");
-   
   };
 
   return (
     <S.PopNewCardWrapper>
       <S.PopNewCardContainer>
-        <S.PopNewCardBlock >
+        <S.PopNewCardBlock>
           <S.PopNewCardContent as="form" onSubmit={handleSubmit}>
             <S.Title>Создание задачи</S.Title>
 
@@ -83,27 +71,33 @@ function PopNewCard() {
             >
               ✖
             </S.CloseButton>
-            <S.FormWrapper >
+            <S.FormWrapper>
               <PopNewCardForm
-              handleChange={handleChange}
-              formData ={formData}
-              // errors={errors}
-              error={error}
+                handleChange={handleChange}
+                formData={formData}
+                // errors={errors}
+                error={formError}
               />
               <CalendarCard
-                selected={selectedData}
-                onSelect={setSelectedData}
+                selected={selectedDate}
+                onSelectDate={setSelectedDate}
                 dateError={dateError}
               />
             </S.FormWrapper>
-         
+
             <Categories
               selectedTopic={selectedTopic}
               onSelectTopic={handleSelectTopic}
-              categoryError ={categoryError}
+              categoryError={categoryError}
             />
-             
-            <Button type={"submit"} $primary $float $size="newTask" id="btnCreate">
+
+            <Button
+              type={"submit"}
+              $primary
+              $float
+              $size="newTask"
+              id="btnCreate"
+            >
               Создать задачу
             </Button>
           </S.PopNewCardContent>

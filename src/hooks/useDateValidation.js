@@ -4,8 +4,8 @@ import { toast } from "react-toastify";
 export const useDateValidation = () => {
   const [dateError, setDateError] = useState(false);
 
-  const validateDate = (selectedData) => {
-    const isValid = selectedData !== null;
+  const validateDate = (selectedDate) => {
+    const isValid = selectedDate !== null;
 
     if (!isValid) {
       toast.error("Пожалуйста, выберите дату");
