@@ -6,6 +6,8 @@ import { RoutesApp } from "../../const";
 import { useState, useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { checkRequiredFields } from "../../utils";
+import { toast } from "react-toastify";
+import { textValidationErrors } from "../../const";
 
 function AuthForm({ isSignUp }) {
   const navigate = useNavigate();
@@ -22,20 +24,16 @@ function AuthForm({ isSignUp }) {
     password: false,
   });
 
-  const [error, setError] = useState("");
+  // const [error, setError] = useState("");
 
   const validateForm = () => {
     const requiredFields = ["login", "password", ...(isSignUp ? ["name"] : [])];
-    const { isValid, errors } = checkRequiredFields(formData, requiredFields);
+    const { isValid} = checkRequiredFields(formData, requiredFields);
   
-    setErrors(errors);
-    setError(
-      isValid
-        ? ""
-        : isSignUp
-          ? "Введенные вами данные не корректны. Чтобы завершить регистрацию, заполните все поля в форме."
-          : "Введенные вами данные не распознаны. Проверьте свой логин и пароль и повторите попытку входа."
-    );
+    // setErrors(errors);
+    if (!isValid) {
+      toast.error(isSignUp ? textValidationErrors.signUpError : textValidationErrors.signInError);
+    }
   
     return isValid;
   };
@@ -47,7 +45,7 @@ function AuthForm({ isSignUp }) {
       [name]: value,
     });
     setErrors({ ...errors, [name]: false });
-    setError("");
+    // setError("");
   };
 
   const handleSubmit = async (e) => {
@@ -69,7 +67,7 @@ function AuthForm({ isSignUp }) {
         }
       }
     } catch (err) {
-      setError(err.message);
+      toast.error(err.message || "Что-то пошло не так");
     }
   };
 
@@ -112,7 +110,7 @@ function AuthForm({ isSignUp }) {
                 value={formData.password}
                 onChange={handleChange}
               />
-              <S.ErrorText>{error}</S.ErrorText>
+              {/* <S.ErrorText>{error}</S.ErrorText> */}
               <AuthButton $primary id="SignUpEnter" type="submit">
                 {isSignUp ? "Зарегистрироваться" : "Войти"}
               </AuthButton>
