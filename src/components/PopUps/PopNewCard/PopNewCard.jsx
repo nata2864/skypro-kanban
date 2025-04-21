@@ -9,37 +9,34 @@ import { useNavigate } from "react-router-dom";
 import { RoutesApp } from "../../../const";
 import { checkRequiredFields } from "../../../utils";
 import { toast } from "react-toastify";
+import { useCategoryValidation } from "../../../hooks/useCategoryValidation";
 
 function PopNewCard() {
   const [selectedTopic, setSelectedTopic] = useState(null);
+  const { categoryError, validateCategory } = useCategoryValidation();
   const [selectedData, setSelectedData] = useState(null);
   const [formData, setFormData] = useState({
     task: "",
     description: "",
   });
-  // const [errors, setErrors] = useState({
-  //   task: false,
-  //   description: false,
-  // });
+
   const [error, setError] = useState("");
-  const [categoryError, setCategoryError] = useState(false);
+  // const [categoryError, setCategoryError] = useState(false);
 
   const handleSelectTopic = (topic) => {
     setSelectedTopic(topic);
-    setCategoryError(false)
+    // setCategoryError(false)
   };
 
   const navigate = useNavigate();
 
 
 
- 
-
   const validateForm = () => {
     const requiredFields = ["task", "description"];
     const { isValid } = checkRequiredFields(formData, requiredFields);
 
-    // setErrors(errors);
+
     setError(isValid ? "" : toast.error("Введите данные"));
     return isValid;
   };
@@ -50,18 +47,16 @@ function PopNewCard() {
       ...formData,
       [name]: value,
     });
-    // setErrors({ ...errors, [name]: false });
+  
     setError("");
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const isFormValid = validateForm();
-    const isCategorySelected = selectedTopic !== null;
+    const isCategoryValid = validateCategory(selectedTopic);
 
-    setCategoryError(!isCategorySelected);
-
-    if (!isFormValid || !isCategorySelected) {
+    if (!isFormValid || isCategoryValid) {
       return;
     }
   
