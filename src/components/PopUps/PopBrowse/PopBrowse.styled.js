@@ -4,7 +4,7 @@ import { Placeholder } from "../../PlaceHolder.styled";
 import { PopNewCardWrapper,PopNewCardContainer,PopNewCardBlock, FormWrapper  } from "../PopNewCard/PopNewCard.styled";
 import { Form,FormLabel } from "../../PopNewCardForm/PopNewCardForm.styled";
 
-export const PopBrowseWrapper = styled(PopNewCardWrapper ).div`
+export const PopBrowseWrapper = styled(PopNewCardWrapper )`
   z-index: 7;
 `;
 
