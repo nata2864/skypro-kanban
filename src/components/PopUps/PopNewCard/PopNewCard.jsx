@@ -8,11 +8,21 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { RoutesApp } from "../../../const";
 import { checkRequiredFields } from "../../../utils";
-// import { PopUpErrorText } from "../../PopNewCardForm/PopNewCardForm.styled";
+import { toast } from "react-toastify";
 
 function PopNewCard() {
   const [selectedTopic, setSelectedTopic] = useState(null);
   const [selectedData, setSelectedData] = useState(null);
+  const [formData, setFormData] = useState({
+    task: "",
+    description: "",
+  });
+  // const [errors, setErrors] = useState({
+  //   task: false,
+  //   description: false,
+  // });
+  const [error, setError] = useState("");
+  const [categoryError, setCategoryError] = useState(false);
 
   const handleSelectTopic = (topic) => {
     setSelectedTopic(topic);
@@ -21,26 +31,16 @@ function PopNewCard() {
 
   const navigate = useNavigate();
 
-  const [formData, setFormData] = useState({
-    task: "",
-    description: "",
-  });
 
-  const [errors, setErrors] = useState({
-    task: false,
-    description: false,
-    password: false,
-  });
 
-  const [error, setError] = useState("");
-  const [categoryError, setCategoryError] = useState(false);
+ 
 
   const validateForm = () => {
     const requiredFields = ["task", "description"];
-    const { isValid, errors } = checkRequiredFields(formData, requiredFields);
+    const { isValid } = checkRequiredFields(formData, requiredFields);
 
-    setErrors(errors);
-    setError(isValid ? "" : "Введите данные");
+    // setErrors(errors);
+    setError(isValid ? "" : toast.error("Введите данные"));
     return isValid;
   };
 
@@ -50,7 +50,7 @@ function PopNewCard() {
       ...formData,
       [name]: value,
     });
-    setErrors({ ...errors, [name]: false });
+    // setErrors({ ...errors, [name]: false });
     setError("");
   };
   const handleSubmit = async (e) => {
@@ -87,7 +87,7 @@ function PopNewCard() {
               <PopNewCardForm
               handleChange={handleChange}
               formData ={formData}
-              errors={errors}
+              // errors={errors}
               error={error}
               />
               <CalendarCard

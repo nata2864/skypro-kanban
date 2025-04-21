@@ -4,7 +4,7 @@ import * as S from "./PopNewCardForm.styled";
 // import { useState } from "react";
 
 
-function PopNewCardForm({handleChange,error,formData,errors}) {
+function PopNewCardForm({handleChange,formData}) {
   // const [formData, setFormData] = useState({
   //   task: "",
   //   description: "",
@@ -51,7 +51,7 @@ function PopNewCardForm({handleChange,error,formData,errors}) {
         <S.Label htmlFor="formTitle">Название задачи</S.Label>
         <S.Input
           name="task"
-          $error={errors.task}
+          // $error={errors.task}
           value={formData.task}
           onChange={handleChange}
           type="text"
@@ -63,14 +63,14 @@ function PopNewCardForm({handleChange,error,formData,errors}) {
         <S.Label htmlFor="textArea">Описание задачи</S.Label>
         <S.TextArea
           name="description"
-          $error={errors.description}
+          // $error={errors.description}
           value={formData.description}
           onChange={handleChange}
           id="textArea"
           placeholder="Введите описание задачи..."
         />
 
-        {error && <S.PopUpErrorText>{error}</S.PopUpErrorText>}
+        {/* {error && <S.PopUpErrorText>{error}</S.PopUpErrorText>} */}
       </S.FormBlock>
     </S.Form>
   );
