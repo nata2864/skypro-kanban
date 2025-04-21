@@ -3,9 +3,9 @@ import {
   CategoriePopUpButton,
   CategoriePopUpButtonText,
 } from "../CategorieButton/CategorieButton.styled";
-import { PopUpErrorText } from "../PopNewCardForm/PopNewCardForm.styled";
+// import { PopUpErrorText } from "../PopNewCardForm/PopNewCardForm.styled";
 
-function Categories({ selectedTopic, onSelectTopic,categoryError }) {
+function Categories({ selectedTopic, onSelectTopic }) {
   const categories = ["Web Design", "Research", "Copywriting"];
 
   console.log("selectedTopic:", selectedTopic);
@@ -26,7 +26,8 @@ function Categories({ selectedTopic, onSelectTopic,categoryError }) {
             </CategoriePopUpButtonText>
           </CategoriePopUpButton>
         ))}
-          {categoryError && <PopUpErrorText>Пожалуйста, выберите категорию</PopUpErrorText>}
+          {/* {categoryError && <PopUpErrorText>Пожалуйста, выберите категорию</PopUpErrorText>} */}
+         
       </S.CategoriesThemes>
     </S.Categories>
   );
