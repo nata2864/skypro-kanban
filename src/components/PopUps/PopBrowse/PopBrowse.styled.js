@@ -34,35 +34,7 @@ export const PopBrowseTitle = styled.h3`
   line-height: 24px;
 `;
 
-export const PopBrowseWrap = styled(FormWrapper)``;
 
-export const PopBrowseForm = styled(Form)``;
-
-export const PopBrowseFormLabel = styled(FormLabel)``;
-
-export const FormBrowseBlock = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-export const FormBrowseArea = styled(Placeholder).attrs({ as: "textarea" })`
-  max-width: 370px;
-  width: 100%;
-  outline: none;
-  padding: 14px;
-  background: #eaeef6;
-  border: 0.7px solid rgba(148, 166, 190, 0.4);
-  border-radius: 8px;
-  font-size: 14px;
-  line-height: 1;
-  letter-spacing: -0.14px;
-  margin-top: 14px;
-  height: 200px;
-  @media screen and (max-width: 495px) {
-    max-width: 100%;
-    height: 37px;
-  }
-`;
 
 export const PopBrowseStatus = styled.div`
   margin-bottom: 11px;
