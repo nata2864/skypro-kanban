@@ -8,20 +8,22 @@ import {
 import { useFormValidation } from "../../../hooks/useFormValidation";
 import { useDateValidation } from "../../../hooks/useDateValidation";
 // import { useStatusValidation } from "../../../hooks/useStatusValidation";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { RoutesApp } from "../../../const";
+// import { RoutesApp } from "../../../const";
 // import { useStatusValidation } from "../../../hooks/useStatusValidation ";
 import { useParams } from "react-router-dom";
 import { TaskContext } from "../../../context/TaskContext";
 import { useContext } from "react";
 import ModalForm from "../../ModalForm/ModalForm";
+import ActionButtons from "../../ActionButtons/ActionButtons";
+import StatusBlock from "../../StatusBlock/StatusBlock";
 
 function PopBrowse() {
   const { id } = useParams();
 
   const { tasks } = useContext(TaskContext);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const selectedTask = tasks.find((task) => task._id === id);
   console.log(selectedTask);
@@ -31,6 +33,7 @@ function PopBrowse() {
   const [formData, setFormData] = useState({
     description: "",
   });
+  const [isEditMode, setIsEditMode] = useState(false);
 
   // const { statusError, validateStatus } = useStatusValidation();
   const { dateError, validateDate } = useDateValidation();
@@ -64,6 +67,14 @@ function PopBrowse() {
     console.log("Valid");
   };
 
+  
+const handelEdit = () => 
+  {  requestAnimationFrame(() => {
+    setIsEditMode(true);
+  });
+ 
+  }
+
   return (
     <S.PopBrowseWrapper>
       <S.PopBrowseContainer>
@@ -79,11 +90,19 @@ function PopBrowse() {
             </S.PopBrowseTopBlock>
             <S.PopBrowseStatus>
               <S.PopBrowseStatusTitle>Статус</S.PopBrowseStatusTitle>
-              <S.StatusThemes>
+              <StatusBlock
+              
+              isEditMode={isEditMode}
+              // selectedStatus={selectedStatus}
+            
+              selectedTask={selectedTask}
+              // statusError={statusError}
+              />
+              {/* <S.StatusThemes>
                 <S.StatusTheme $isActiveStatus>
              
                   <S.StatusThemeTitle>{selectedTask?.status}</S.StatusThemeTitle>
-                </S.StatusTheme>
+                </S.StatusTheme> */}
                 {/* {statusTitles.map((item) => (
                   <S.StatusTheme
                     key={item}
@@ -94,7 +113,7 @@ function PopBrowse() {
                     <S.StatusThemeTitle>{item}</S.StatusThemeTitle>
                   </S.StatusTheme>
                 ))} */}
-              </S.StatusThemes>
+              {/* </S.StatusThemes> */}
             </S.PopBrowseStatus>
             {/* <S.PopBrowseWrap>
               <S.PopBrowseForm>
@@ -124,7 +143,7 @@ function PopBrowse() {
              onSelectDate={setSelectedDate}
              dateError={dateError}/>
 
-            <S.PopBrowseBtnBrowse>
+            {/* <S.PopBrowseBtnBrowse>
               <S.BtnGroep>
                 <S.PopBrowseButton type="button">
                   Редактировать задачу
@@ -158,7 +177,12 @@ function PopBrowse() {
               >
                 Закрыть
               </S.PopBrowseButton>
-            </S.PopBrowseBtnBrowse>
+            </S.PopBrowseBtnBrowse> */}
+            <ActionButtons
+            isEditMode={isEditMode}
+            onSubmit={handleSubmit}
+            onCancel={handelEdit}
+            />
           </S.PopBrowseContent>
         </S.PopBrowseBlock>
       </S.PopBrowseContainer>
