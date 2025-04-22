@@ -11,6 +11,15 @@ export const Calendar = styled(DayPicker)`
   --rdp-cell-width: 25px;
 `; 
 
+export const CalendarTitle = styled.p`
+ padding: 0;
+   color: #000;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1;
+
+`
+
 export const CalendarPeriod = styled.p`
 // margin-bottom: 12px;
  color: #94a6be;

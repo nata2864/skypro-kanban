@@ -2,7 +2,7 @@ import { Button } from "../../Button.styled";
 import CalendarCard from "../../Calendar/CalendarCard";
 // import Calendar from "../../Calendar/Calendar";
 import Categories from "../../Categories/Categories";
-import PopNewCardForm from "../../PopNewCardForm/PopNewCardForm";
+// import PopNewCardForm from "../../PopNewCardForm/PopNewCardForm";
 import * as S from "./PopNewCard.styled";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -10,6 +10,8 @@ import { RoutesApp } from "../../../const";
 import { useCategoryValidation } from "../../../hooks/useCategoryValidation";
 import { useDateValidation } from "../../../hooks/useDateValidation";
 import { useFormValidation } from "../../../hooks/useFormValidation";
+import TaskForm from "../../TaskForm/TaskForm";
+import ModalForm from "../../ModalForm/ModalForm";
 
 function PopNewCard() {
   const [selectedTopic, setSelectedTopic] = useState(null);
@@ -68,18 +70,29 @@ function PopNewCard() {
             >
               ✖
             </S.CloseButton>
-            <S.FormWrapper>
-              <PopNewCardForm
+            {/* <S.FormWrapper>
+              <TaskForm
                 handleChange={handleChange}
                 formData={formData}
                 error={formError}
+                showTaskInput = {true}
               />
               <CalendarCard
                 selected={selectedDate}
                 onSelectDate={setSelectedDate}
                 dateError={dateError}
               />
-            </S.FormWrapper>
+            </S.FormWrapper> */}
+            <ModalForm
+             handleChange={handleChange}
+             formData={formData}
+             error={formError}
+             showTaskInput = {true}
+             selected={selectedDate}
+             onSelectDate={setSelectedDate}
+             dateError={dateError}
+            
+            />
 
             <Categories
               selectedTopic={selectedTopic}

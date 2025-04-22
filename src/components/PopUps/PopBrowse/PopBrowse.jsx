@@ -3,18 +3,19 @@ import {
   CategoriePopUpButton,
   CategoriePopUpButtonText,
 } from "../../CategorieButton/CategorieButton.styled";
-import { statusTitles } from "../../../const";
-import CalendarCard from "../../Calendar/CalendarCard";
+// import { statusTitles } from "../../../const";
+// import CalendarCard from "../../Calendar/CalendarCard";
 import { useFormValidation } from "../../../hooks/useFormValidation";
 import { useDateValidation } from "../../../hooks/useDateValidation";
 // import { useStatusValidation } from "../../../hooks/useStatusValidation";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { RoutesApp } from "../../../const";
-import { useStatusValidation } from "../../../hooks/useStatusValidation ";
+// import { useStatusValidation } from "../../../hooks/useStatusValidation ";
 import { useParams } from "react-router-dom";
 import { TaskContext } from "../../../context/TaskContext";
 import { useContext } from "react";
+import ModalForm from "../../ModalForm/ModalForm";
 
 function PopBrowse() {
   const { id } = useParams();
@@ -25,22 +26,22 @@ function PopBrowse() {
   const selectedTask = tasks.find((task) => task._id === id);
   console.log(selectedTask);
 
-  const [selectedStatus, setSelectedStatus] = useState(null);
+  // const [selectedStatus, setSelectedStatus] = useState(null);
   const [selectedDate, setSelectedDate] = useState(null);
   const [formData, setFormData] = useState({
     description: "",
   });
 
-  const { statusError, validateStatus } = useStatusValidation();
+  // const { statusError, validateStatus } = useStatusValidation();
   const { dateError, validateDate } = useDateValidation();
 
   const { formError, validateForm } = useFormValidation(formData, [
     "description",
   ]);
 
-  const handleSelectStatus = (status) => {
-    setSelectedStatus(status);
-  };
+  // const handleSelectStatus = (status) => {
+  //   setSelectedStatus(status);
+  // };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -53,10 +54,10 @@ function PopBrowse() {
     e.preventDefault();
 
     const isFormValid = validateForm();
-    const isStatusValid = validateStatus(selectedStatus);
+    // const isStatusValid = validateStatus(selectedStatus);
     const isDateValid = validateDate(selectedDate);
 
-    if (!isFormValid || !isStatusValid || !isDateValid) {
+    if (!isFormValid ||  !isDateValid) {
       return;
     }
 
@@ -95,7 +96,7 @@ function PopBrowse() {
                 ))} */}
               </S.StatusThemes>
             </S.PopBrowseStatus>
-            <S.PopBrowseWrap>
+            {/* <S.PopBrowseWrap>
               <S.PopBrowseForm>
                 <S.FormBrowseBlock>
                   <S.PopBrowseFormLabel>Описание задачи</S.PopBrowseFormLabel>
@@ -114,7 +115,14 @@ function PopBrowse() {
                 onSelectDate={setSelectedDate}
                 error={dateError}
               />
-            </S.PopBrowseWrap>
+            </S.PopBrowseWrap> */}
+            <ModalForm   handleChange={handleChange}
+             formData={formData}
+             error={formError}
+            //  showTaskInput = {true}
+             selected={selectedDate}
+             onSelectDate={setSelectedDate}
+             dateError={dateError}/>
 
             <S.PopBrowseBtnBrowse>
               <S.BtnGroep>

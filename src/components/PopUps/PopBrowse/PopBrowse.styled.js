@@ -1,22 +1,24 @@
 import styled from "styled-components";
 import { Button } from "../../Button.styled";
 import { Placeholder } from "../../PlaceHolder.styled";
-import { PopNewCardWrapper,PopNewCardContainer,PopNewCardBlock, FormWrapper  } from "../PopNewCard/PopNewCard.styled";
-import { Form,FormLabel } from "../../PopNewCardForm/PopNewCardForm.styled";
+import {
+  PopNewCardWrapper,
+  PopNewCardContainer,
+  PopNewCardBlock,
+  FormWrapper,
+} from "../PopNewCard/PopNewCard.styled";
+import { Form, FormLabel } from "../../TaskForm/TaskForm.styled";
 import { categorieColor } from "../../../const";
 
-export const PopBrowseWrapper = styled(PopNewCardWrapper )`
+export const PopBrowseWrapper = styled(PopNewCardWrapper)`
   z-index: 7;
 `;
 
-export const PopBrowseContainer = styled(PopNewCardContainer )`
-`;
+export const PopBrowseContainer = styled(PopNewCardContainer)``;
 
-export const PopBrowseBlock = styled(PopNewCardBlock)`
-`;
+export const PopBrowseBlock = styled(PopNewCardBlock)``;
 
-export const PopBrowseContent = styled.div`
-`;
+export const PopBrowseContent = styled.div``;
 
 export const PopBrowseTopBlock = styled.div`
   display: flex;
@@ -32,16 +34,11 @@ export const PopBrowseTitle = styled.h3`
   line-height: 24px;
 `;
 
-export const PopBrowseWrap = styled(FormWrapper)`
-`;
+export const PopBrowseWrap = styled(FormWrapper)``;
 
-export const PopBrowseForm = styled(Form )`
+export const PopBrowseForm = styled(Form)``;
 
-`;
-
-export const PopBrowseFormLabel = styled(FormLabel)`
-
-`;
+export const PopBrowseFormLabel = styled(FormLabel)``;
 
 export const FormBrowseBlock = styled.div`
   display: flex;
@@ -89,13 +86,16 @@ export const StatusThemes = styled.div`
 export const StatusTheme = styled.div`
   border-radius: 24px;
   border: 0.7px solid rgba(0, 62, 144, 0.4);
-background: ${(props) => (props.$isActiveStatus ? categorieColor.grey.background : "transparent")};
+  background: ${(props) =>
+    props.$isActiveStatus ? categorieColor.grey.background : "transparent"};
 
-  color:${(props) => (props.$isActiveStatus ? categorieColor.grey.color: "#94a6be")};;
+  color: ${(props) =>
+    props.$isActiveStatus ? categorieColor.grey.color : "#94a6be"};
   padding: 11px 14px 10px;
   margin-right: 7px;
   margin-bottom: 7px;
-  border: ${(props) => (props.$isActiveStatus ? "none" : " 0.7px solid rgba(0, 62, 144, 0.4)")};
+  border: ${(props) =>
+    props.$isActiveStatus ? "none" : " 0.7px solid rgba(0, 62, 144, 0.4)"};
 `;
 
 export const StatusThemeTitle = styled.p`
@@ -124,7 +124,7 @@ export const PopBrowseButton = styled(Button)`
   margin-bottom: 10px;
   padding: 0 14px;
   margin-right: 8px;
-  width: auto; 
+  width: auto;
   @media screen and (max-width: 495px) {
     width: 100%;
     height: 40px;
