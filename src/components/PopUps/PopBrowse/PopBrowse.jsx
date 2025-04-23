@@ -3,44 +3,35 @@ import {
   CategoriePopUpButton,
   CategoriePopUpButtonText,
 } from "../../CategorieButton/CategorieButton.styled";
-// import { statusTitles } from "../../../const";
-// import CalendarCard from "../../Calendar/CalendarCard";
 import { useFormValidation } from "../../../hooks/useFormValidation";
 import { useDateValidation } from "../../../hooks/useDateValidation";
-// import { useStatusValidation } from "../../../hooks/useStatusValidation";
-// import { useNavigate } from "react-router-dom";
-import { useState } from "react";
-// import { RoutesApp } from "../../../const";
-// import { useStatusValidation } from "../../../hooks/useStatusValidation ";
+import { useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { TaskContext } from "../../../context/TaskContext";
-import { useContext } from "react";
 import ModalForm from "../../ModalForm/ModalForm";
 import ActionButtons from "../../ActionButtons/ActionButtons";
 import StatusBlock from "../../StatusBlock/StatusBlock";
+import { useNavigate } from "react-router-dom";
+import { RoutesApp } from "../../../const";
 
 function PopBrowse() {
   const { id } = useParams();
-
-  const { tasks } = useContext(TaskContext);
-  // const navigate = useNavigate();
-
+  const navigate = useNavigate();
+  const { tasks, deleteTaskById } = useContext(TaskContext);
   const selectedTask = tasks.find((task) => task._id === id);
-  console.log(selectedTask);
+  const { dateError, validateDate } = useDateValidation();
 
   // const [selectedStatus, setSelectedStatus] = useState(null);
   const [selectedDate, setSelectedDate] = useState(null);
   const [formData, setFormData] = useState({
     description: "",
   });
-  const [isEditMode, setIsEditMode] = useState(false);
-
-  // const { statusError, validateStatus } = useStatusValidation();
-  const { dateError, validateDate } = useDateValidation();
-
   const { formError, validateForm } = useFormValidation(formData, [
     "description",
   ]);
+  const [isEditMode, setIsEditMode] = useState(false);
+
+  // const { statusError, validateStatus } = useStatusValidation();
 
   // const handleSelectStatus = (status) => {
   //   setSelectedStatus(status);
@@ -60,26 +51,29 @@ function PopBrowse() {
     // const isStatusValid = validateStatus(selectedStatus);
     const isDateValid = validateDate(selectedDate);
 
-    if (!isFormValid ||  !isDateValid) {
+    if (!isFormValid || !isDateValid) {
       return;
     }
 
     console.log("Valid");
   };
 
-  
-const handelEdit = () => 
-  {  requestAnimationFrame(() => {
-    setIsEditMode(true);
-  });
- 
-  }
+  const handelEdit = () => {
+    requestAnimationFrame(() => {
+      setIsEditMode(true);
+    });
+  };
+
+  const handelDelete = () => {
+    deleteTaskById({ id: selectedTask._id });
+    navigate(RoutesApp.MAIN);
+  };
 
   return (
     <S.PopBrowseWrapper>
       <S.PopBrowseContainer>
         <S.PopBrowseBlock>
-          <S.PopBrowseContent as="form" onSubmit={handleSubmit}>
+          <S.PopBrowseContent>
             <S.PopBrowseTopBlock>
               <S.PopBrowseTitle>{selectedTask?.title}</S.PopBrowseTitle>
               <CategoriePopUpButton $topic={selectedTask?.topic} $isActive>
@@ -91,97 +85,29 @@ const handelEdit = () =>
             <S.PopBrowseStatus>
               <S.PopBrowseStatusTitle>Статус</S.PopBrowseStatusTitle>
               <StatusBlock
-              
-              isEditMode={isEditMode}
-              // selectedStatus={selectedStatus}
-            
-              selectedTask={selectedTask}
-              // statusError={statusError}
+                isEditMode={isEditMode}
+                // selectedStatus={selectedStatus}
+
+                selectedTask={selectedTask}
+                // statusError={statusError}
               />
-              {/* <S.StatusThemes>
-                <S.StatusTheme $isActiveStatus>
-             
-                  <S.StatusThemeTitle>{selectedTask?.status}</S.StatusThemeTitle>
-                </S.StatusTheme> */}
-                {/* {statusTitles.map((item) => (
-                  <S.StatusTheme
-                    key={item}
-                    $isActive={item === selectedStatus}
-                    onClick={() => handleSelectStatus(item)}
-                    error={statusError}
-                  >
-                    <S.StatusThemeTitle>{item}</S.StatusThemeTitle>
-                  </S.StatusTheme>
-                ))} */}
-              {/* </S.StatusThemes> */}
             </S.PopBrowseStatus>
-            {/* <S.PopBrowseWrap>
-              <S.PopBrowseForm>
-                <S.FormBrowseBlock>
-                  <S.PopBrowseFormLabel>Описание задачи</S.PopBrowseFormLabel>
-                  <S.FormBrowseArea
-                    name="description"
-                    value={formData.description}
-                    onChange={handleChange}
-                    error={formError}
-                    placeholder="Введите описание задачи..."
-                  />
-                </S.FormBrowseBlock>
-              </S.PopBrowseForm>
 
-              <CalendarCard
-                selected={selectedDate}
-                onSelectDate={setSelectedDate}
-                error={dateError}
-              />
-            </S.PopBrowseWrap> */}
-            <ModalForm   handleChange={handleChange}
-             formData={formData}
-             error={formError}
-            //  showTaskInput = {true}
-             selected={selectedDate}
-             onSelectDate={setSelectedDate}
-             dateError={dateError}/>
+            <ModalForm
+              handleChange={handleChange}
+              formData={formData}
+              error={formError}
+              //  showTaskInput = {true}
+              selected={selectedDate}
+              onSelectDate={setSelectedDate}
+              dateError={dateError}
+            />
 
-            {/* <S.PopBrowseBtnBrowse>
-              <S.BtnGroep>
-                <S.PopBrowseButton type="button">
-                  Редактировать задачу
-                </S.PopBrowseButton>
-                <S.PopBrowseButton type="button">
-                  Удалить задачу
-                </S.PopBrowseButton>
-              </S.BtnGroep>
-              <S.PopBrowseButton
-                $primary
-                onClick={() => {
-                  navigate(RoutesApp.MAIN);
-                }}
-              >
-                Закрыть
-              </S.PopBrowseButton>
-            </S.PopBrowseBtnBrowse>
-            <S.PopBrowseBtnBrowse>
-              <S.BtnGroep>
-                <S.PopBrowseButton type="submit">Сохранить</S.PopBrowseButton>
-                <S.PopBrowseButton type="button">Отменить</S.PopBrowseButton>
-                <S.PopBrowseButton type="button">
-                  Удалить задачу
-                </S.PopBrowseButton>
-              </S.BtnGroep>
-              <S.PopBrowseButton
-                $primary
-                onClick={() => {
-                  navigate(RoutesApp.MAIN);
-                }}
-              >
-                Закрыть
-              </S.PopBrowseButton>
-            </S.PopBrowseBtnBrowse> */}
             <ActionButtons
-            isEditMode={isEditMode}
-            onSubmit={handleSubmit}
-            onCancel={handelEdit}
+              isEditMode={isEditMode}
+              handelDelete={handelDelete}
+              onSubmit={handleSubmit}
+              onCancel={handelEdit}
             />
           </S.PopBrowseContent>
         </S.PopBrowseBlock>

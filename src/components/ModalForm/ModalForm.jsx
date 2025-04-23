@@ -3,10 +3,11 @@ import TaskForm from "../TaskForm/TaskForm";
 import CalendarCard from "../Calendar/CalendarCard";
 
 
-function ModalForm({handleChange,formData,error,selected,onSelectDate,dateError,showTaskInput}) {
+function ModalForm({handleChange,handelDelete,formData,error,selected,onSelectDate,dateError,showTaskInput}) {
     return(<FormWrapper>
         <TaskForm
           handleChange={handleChange}
+          handelDelete={handelDelete}
           formData={formData}
           error={error}
           showTaskInput = {showTaskInput}
