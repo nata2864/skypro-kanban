@@ -13,6 +13,7 @@ import ActionButtons from "../../ActionButtons/ActionButtons";
 import StatusBlock from "../../StatusBlock/StatusBlock";
 import { useNavigate } from "react-router-dom";
 import { RoutesApp } from "../../../const";
+import useStatusValidation from "../../../hooks/useStatusValidation "
 
 function PopBrowse() {
   const { id } = useParams();
@@ -21,21 +22,26 @@ function PopBrowse() {
   const selectedTask = tasks.find((task) => task._id === id);
   const { dateError, validateDate } = useDateValidation();
 
-  // const [selectedStatus, setSelectedStatus] = useState(null);
+  const [selectedStatus, setSelectedStatus] = useState(null);
   const [selectedDate, setSelectedDate] = useState(null);
   const [formData, setFormData] = useState({
     description: "",
   });
+  const [isEditMode, setIsEditMode] = useState(false);
+
+
   const { formError, validateForm } = useFormValidation(formData, [
     "description",
   ]);
-  const [isEditMode, setIsEditMode] = useState(false);
 
-  // const { statusError, validateStatus } = useStatusValidation();
+  const { statusError, validateStatus } = useStatusValidation();
+ 
 
-  // const handleSelectStatus = (status) => {
-  //   setSelectedStatus(status);
-  // };
+
+
+  const handleSelectStatus = (status) => {
+    setSelectedStatus(status);
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -48,10 +54,10 @@ function PopBrowse() {
     e.preventDefault();
 
     const isFormValid = validateForm();
-    // const isStatusValid = validateStatus(selectedStatus);
+    const isStatusValid = validateStatus(selectedStatus);
     const isDateValid = validateDate(selectedDate);
 
-    if (!isFormValid || !isDateValid) {
+    if (!isFormValid || !isDateValid || !isStatusValid) {
       return;
     }
 
@@ -86,10 +92,10 @@ function PopBrowse() {
               <S.PopBrowseStatusTitle>Статус</S.PopBrowseStatusTitle>
               <StatusBlock
                 isEditMode={isEditMode}
-                // selectedStatus={selectedStatus}
-
+                selectedStatus={selectedStatus}
+                onSelectStatus={handleSelectStatus}
                 selectedTask={selectedTask}
-                // statusError={statusError}
+                statusError={statusError}
               />
             </S.PopBrowseStatus>
 

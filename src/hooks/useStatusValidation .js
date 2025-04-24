@@ -2,7 +2,7 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import { textValidationErrors } from "../const";
 
-export const useStatusValidation = () => {
+const useStatusValidation = () => {
   const [statusError, setStatusError] = useState(false);
 
   const validateStatus = (selectedStatus) => {
@@ -20,3 +20,5 @@ export const useStatusValidation = () => {
 
   return { statusError, validateStatus};
 };
+
+export default useStatusValidation;

@@ -1,7 +1,7 @@
 import { statusTitles } from "../../const";
 import * as S from "./StatusBlock.styled"
 
-function StatusBlock({ isEditMode,  selectedTask}) {
+function StatusBlock({ isEditMode,  selectedTask, selectedStatus,  onSelectStatus}) {
   return (
    
 
@@ -10,9 +10,9 @@ function StatusBlock({ isEditMode,  selectedTask}) {
           statusTitles.map((item) => (
             <S.StatusTheme
               key={item}
-            //   $isActive={item === selectedStatus}
-            //   onClick={() => onSelectStatus(item)}
-            //   error={statusError}
+              $isActiveStatus={item === selectedStatus}
+              onClick={() => onSelectStatus(item)}
+
             >
               <S.StatusThemeTitle>{item}</S.StatusThemeTitle>
             </S.StatusTheme>
