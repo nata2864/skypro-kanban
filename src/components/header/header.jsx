@@ -9,6 +9,9 @@ import {
 } from "./HeaderUserButton.styled";
 import Logo from "../Logo/Logo";
 import * as S from "./Header.styled";
+import { useContext } from "react";
+
+import { AuthContext } from "../../context/AuthContext";
 
 function Header() {
   const [isOpenPopUser, setIsOpenPopUser] = useState(false);
@@ -19,26 +22,18 @@ function Header() {
 
   const navigate = useNavigate();
 
+  const { user } = useContext(AuthContext);
+
   return (
     <S.Header>
       <S.Container>
         <S.Block>
-          {/* <div className="header__logo _show _light">
-            <a href="" target="_self">
-              <img
-                src="../../public/images/logo.png"
-                alt="Логотип для светлой темы"
-              />
-            </a>
-          </div> */}
           <Logo />
           <div className="header__logo _dark">
-            <a href="" target="_self">
-              <img
-                src="../public/images/logo_dark.png"
-                alt="Логотип для темной темы"
-              />
-            </a>
+            <img
+              src="../public/images/logo_dark.png"
+              alt="Логотип для темной темы"
+            />
           </div>
           <S.Nav>
             <HeaderPopupNewCardButton
@@ -48,7 +43,7 @@ function Header() {
               Создать новую задачу
             </HeaderPopupNewCardButton>
             <HeaderUserButton onClick={handleClickPopupUser}>
-              Ivan Ivanov
+              {user.name}
             </HeaderUserButton>
             <PopUserSet
               setIsOpenPopUser={setIsOpenPopUser}
