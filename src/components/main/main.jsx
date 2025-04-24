@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { statusTitles } from "../../const";
 
 function Main() {
-  const { error, loading, tasks } = useContext(TaskContext);
+  const {  loading, tasks } = useContext(TaskContext);
 
   return loading ? (
     <p>Идёт загрузка</p>
@@ -14,12 +14,16 @@ function Main() {
       <S.Container>
         <S.MainBlock>
           <S.MainContent>
-            {statusTitles.map((item, index) => (
-              <Column key={index} title={item} tasks={tasks} />
-            ))}
+            {tasks && tasks.length > 0 ? (
+              statusTitles.map((item, index) => (
+                <Column key={index} title={item} tasks={tasks} />
+              ))
+            ) : (
+              <S.NoTasksText>Новых задач нет</S.NoTasksText>
+            )}
           </S.MainContent>
         </S.MainBlock>
-        <p>{error}</p>
+
       </S.Container>
     </S.Main>
   );

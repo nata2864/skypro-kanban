@@ -67,6 +67,8 @@ statusError:"Пожалуйста, выберите статус",
 addNewTaskError: "Ошибка добавления задачи",
 updateTaskError: "Ошибка редактирования задачи",
 deleteTaskError: "Ошибка удаления задачи",
+getTasksError:"Ошибка при загрузке задач",
+addNewTask:"Ошибка при обновлении задачи",
 }
 
 

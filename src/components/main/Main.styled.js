@@ -37,3 +37,10 @@ export const Container = styled.div`
     padding: 0 16px;
   }
 `;
+
+export const NoTasksText = styled.p`
+  text-align: center;
+  font-size: 18px;
+  color: #888;
+  margin-top: 40px;
+`;
