@@ -17,9 +17,6 @@ export const statusTitles = [
 ];
 
 export const buttonSizes = {
-  // user: "72px",
-  // exit: "153px",
-  // new: "178px",
   newTask: "132px",
 };
 
@@ -77,9 +74,6 @@ export const lightTheme = {
   modalOverlay: "rgba(0, 0, 0, 0.4)",
   modalBackground: "#FFFFFF",
   modalBorder: "#D4DBE5",
-  // buttonText: '#565EEF',
-  // buttonBorder: '#565EEF',
-  // buttonLink: '#565EEF',
 
   header: {
     background: "#FFFFFF",
@@ -120,9 +114,6 @@ export const darkTheme = {
   modalOverlay: "rgba(0, 0, 0, 0.8)",
   modalBackground: "#20202C",
   modalBorder: "#4E5566",
-  // buttonText: '#FFFFFF',
-  // buttonBorder: '#FFFFFF',
-  // buttonLink: '#FFFFFF',
 
   header: {
     background: "#20202C",

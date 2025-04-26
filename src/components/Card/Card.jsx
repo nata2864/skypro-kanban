@@ -1,10 +1,8 @@
-// import Categorie from "../Categorie/Categorie";
-// import { CategorieButton } from "../Categorie/CategorieButton.styled";
 import CategorieButton from "../CategorieButton/CategorieButton";
 import * as S from "./Card.styled";
 import { useNavigate } from "react-router-dom";
-import { format } from 'date-fns';
-import { ru } from 'date-fns/locale';
+import { format } from "date-fns";
+import { ru } from "date-fns/locale";
 
 function Card({ task }) {
   const { topic, title, date, _id } = task;

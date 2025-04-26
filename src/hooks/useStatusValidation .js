@@ -18,7 +18,7 @@ const useStatusValidation = () => {
     return isValid;
   };
 
-  return { statusError, validateStatus};
+  return { statusError, validateStatus };
 };
 
 export default useStatusValidation;

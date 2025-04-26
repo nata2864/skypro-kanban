@@ -1,4 +1,4 @@
-import styled  from "styled-components";
+import styled from "styled-components";
 import { categorieColor } from "../../const";
 export const StatusThemes = styled.div`
   display: flex;

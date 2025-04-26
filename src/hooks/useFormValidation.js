@@ -6,9 +6,7 @@ import { textValidationErrors } from "../const";
 export const useFormValidation = (formData, requiredFields) => {
   const [formError, setFormError] = useState(false);
 
- 
   const validateForm = () => {
-    
     const { isValid } = checkRequiredFields(formData, requiredFields);
 
     if (!isValid) {

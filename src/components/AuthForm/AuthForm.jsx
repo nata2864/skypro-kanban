@@ -2,12 +2,11 @@ import { useNavigate } from "react-router-dom";
 import * as S from "./AuthForm.styled";
 import { AuthButton } from "./AuthForm.styled";
 import { signUp, signIn } from "../../services/auth";
-import { RoutesApp } from "../../const";
 import { useState, useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { checkRequiredFields } from "../../utils";
 import { toast } from "react-toastify";
-import { textValidationErrors } from "../../const";
+import { textValidationErrors, RoutesApp } from "../../const";
 
 function AuthForm({ isSignUp }) {
   const navigate = useNavigate();
@@ -24,17 +23,18 @@ function AuthForm({ isSignUp }) {
     password: false,
   });
 
-  // const [error, setError] = useState("");
-
   const validateForm = () => {
     const requiredFields = ["login", "password", ...(isSignUp ? ["name"] : [])];
-    const { isValid} = checkRequiredFields(formData, requiredFields);
-  
-    // setErrors(errors);
+    const { isValid } = checkRequiredFields(formData, requiredFields);
+
     if (!isValid) {
-      toast.error(isSignUp ? textValidationErrors.signUpError : textValidationErrors.signInError);
+      toast.error(
+        isSignUp
+          ? textValidationErrors.signUpError
+          : textValidationErrors.signInError
+      );
     }
-  
+
     return isValid;
   };
 
@@ -45,7 +45,6 @@ function AuthForm({ isSignUp }) {
       [name]: value,
     });
     setErrors({ ...errors, [name]: false });
-    // setError("");
   };
 
   const handleSubmit = async (e) => {
@@ -60,7 +59,7 @@ function AuthForm({ isSignUp }) {
 
       if (data) {
         if (isSignUp) {
-          navigate(RoutesApp.SIGN_IN); 
+          navigate(RoutesApp.SIGN_IN);
         } else {
           updateUserInfo(data);
           navigate(RoutesApp.MAIN);
@@ -110,8 +109,8 @@ function AuthForm({ isSignUp }) {
                 value={formData.password}
                 onChange={handleChange}
               />
-           
-              <AuthButton $primary  type="submit">
+
+              <AuthButton $primary type="submit">
                 {isSignUp ? "Зарегистрироваться" : "Войти"}
               </AuthButton>
               <S.TextGroep>

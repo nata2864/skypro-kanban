@@ -1,8 +1,6 @@
 import styled from "styled-components";
 import { ErrorText } from "../AuthForm/AuthForm.styled";
-import {Placeholder} from "../PlaceHolder.styled"
-
-
+import { Placeholder } from "../PlaceHolder.styled";
 
 export const Form = styled.div`
   max-width: 370px;
@@ -27,21 +25,21 @@ const BaseInput = styled(Placeholder)`
   outline: none;
   padding: 14px;
   background: transparent;
-   border: ${(props) => (props.$error ? "0.7px solid red" : "0.7px solid rgba(148, 166, 190, 0.4);")};
+  border: ${(props) =>
+    props.$error ? "0.7px solid red" : "0.7px solid rgba(148, 166, 190, 0.4);"};
   border-radius: 8px;
   font-size: 14px;
   line-height: 1;
   letter-spacing: -0.14px;
-   margin: 20px 0;
-
+  margin: 20px 0;
 `;
 
-export const Input = styled(BaseInput).attrs({ as: 'input' })`
- margin: 20px 0;
- `;
+export const Input = styled(BaseInput).attrs({ as: "input" })`
+  margin: 20px 0;
+`;
 
-export const TextArea = styled(BaseInput).attrs({ as: 'textarea' })`
-   max-width: 370px;
+export const TextArea = styled(BaseInput).attrs({ as: "textarea" })`
+  max-width: 370px;
   margin-top: 14px;
   height: 200px;
 `;

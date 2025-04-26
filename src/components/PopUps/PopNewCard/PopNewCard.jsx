@@ -80,19 +80,7 @@ function PopNewCard() {
             >
               ✖
             </S.CloseButton>
-            {/* <S.FormWrapper>
-              <TaskForm
-                handleChange={handleChange}
-                formData={formData}
-                error={formError}
-                showTaskInput = {true}
-              />
-              <CalendarCard
-                selected={selectedDate}
-                onSelectDate={setSelectedDate}
-                dateError={dateError}
-              />
-            </S.FormWrapper> */}
+
             <ModalForm
               handleChange={handleChange}
               formData={formData}

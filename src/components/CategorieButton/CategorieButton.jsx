@@ -1,4 +1,3 @@
-
 import * as S from "./CategorieButton.styled";
 
 function CategorieButton({ topic }) {

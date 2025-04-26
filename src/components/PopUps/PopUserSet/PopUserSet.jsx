@@ -11,7 +11,6 @@ function PopUserSet({ setIsOpenPopUser, isOpenPopUser }) {
 
   const { user } = useContext(AuthContext);
 
-
   const handelChange = () => {
     setIsChecked(true);
     console.log(isChecked);

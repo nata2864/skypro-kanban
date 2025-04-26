@@ -1,6 +1,6 @@
 import * as S from "./TaskForm.styled";
 
-function TaskForm({ handleChange, formData, showTaskInput}) {
+function TaskForm({ handleChange, formData, showTaskInput }) {
   return (
     <S.Form>
       {showTaskInput && (

@@ -18,5 +18,5 @@ export const useDateValidation = () => {
     return isValid;
   };
 
-  return { dateError, validateDate};
+  return { dateError, validateDate };
 };

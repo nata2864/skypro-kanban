@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { statusTitles } from "../../const";
 
 function Main() {
-  const {  loading, tasks } = useContext(TaskContext);
+  const { loading, tasks } = useContext(TaskContext);
 
   return loading ? (
     <p>Идёт загрузка</p>
@@ -23,7 +23,6 @@ function Main() {
             )}
           </S.MainContent>
         </S.MainBlock>
-
       </S.Container>
     </S.Main>
   );

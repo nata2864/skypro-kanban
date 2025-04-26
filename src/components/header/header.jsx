@@ -1,16 +1,13 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { RoutesApp } from "../../const";
 import PopUserSet from "../PopUps/PopUserSet/PopUserSet";
 import { useNavigate } from "react-router-dom";
-// import { Button } from "../Button.styled";
 import {
   HeaderUserButton,
   HeaderPopupNewCardButton,
 } from "./HeaderUserButton.styled";
 import Logo from "../Logo/Logo";
 import * as S from "./Header.styled";
-import { useContext } from "react";
-
 import { AuthContext } from "../../context/AuthContext";
 
 function Header() {

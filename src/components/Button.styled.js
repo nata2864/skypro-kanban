@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { buttonSizes} from "../const";
+import { buttonSizes } from "../const";
 
 export const Button = styled.button`
   height: 30px;
@@ -33,5 +33,3 @@ export const Button = styled.button`
     border: none;
   }
 `;
-
-
