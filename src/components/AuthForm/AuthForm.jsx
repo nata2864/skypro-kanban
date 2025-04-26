@@ -2,10 +2,11 @@ import { useNavigate } from "react-router-dom";
 import * as S from "./AuthForm.styled";
 import { AuthButton } from "./AuthForm.styled";
 import { signUp, signIn } from "../../services/auth";
-import { RoutesApp } from "../../const";
 import { useState, useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { checkRequiredFields } from "../../utils";
+import { toast } from "react-toastify";
+import { textValidationErrors, RoutesApp } from "../../const";
 
 function AuthForm({ isSignUp }) {
   const navigate = useNavigate();
@@ -22,21 +23,18 @@ function AuthForm({ isSignUp }) {
     password: false,
   });
 
-  const [error, setError] = useState("");
-
   const validateForm = () => {
     const requiredFields = ["login", "password", ...(isSignUp ? ["name"] : [])];
-    const { isValid, errors } = checkRequiredFields(formData, requiredFields);
-  
-    setErrors(errors);
-    setError(
-      isValid
-        ? ""
-        : isSignUp
-          ? "Введенные вами данные не корректны. Чтобы завершить регистрацию, заполните все поля в форме."
-          : "Введенные вами данные не распознаны. Проверьте свой логин и пароль и повторите попытку входа."
-    );
-  
+    const { isValid } = checkRequiredFields(formData, requiredFields);
+
+    if (!isValid) {
+      toast.error(
+        isSignUp
+          ? textValidationErrors.signUpError
+          : textValidationErrors.signInError
+      );
+    }
+
     return isValid;
   };
 
@@ -47,7 +45,6 @@ function AuthForm({ isSignUp }) {
       [name]: value,
     });
     setErrors({ ...errors, [name]: false });
-    setError("");
   };
 
   const handleSubmit = async (e) => {
@@ -62,14 +59,14 @@ function AuthForm({ isSignUp }) {
 
       if (data) {
         if (isSignUp) {
-          navigate(RoutesApp.SIGN_IN); 
+          navigate(RoutesApp.SIGN_IN);
         } else {
           updateUserInfo(data);
           navigate(RoutesApp.MAIN);
         }
       }
     } catch (err) {
-      setError(err.message);
+      toast.error(err.message || "Что-то пошло не так");
     }
   };
 
@@ -81,7 +78,7 @@ function AuthForm({ isSignUp }) {
             <div>
               <S.Title>{isSignUp ? "Регистрация" : "Вход"}</S.Title>
             </div>
-            <S.Form id="formLogUp" onSubmit={handleSubmit}>
+            <S.Form onSubmit={handleSubmit}>
               {isSignUp && (
                 <S.Input
                   $error={errors.name}
@@ -112,8 +109,8 @@ function AuthForm({ isSignUp }) {
                 value={formData.password}
                 onChange={handleChange}
               />
-              <S.ErrorText>{error}</S.ErrorText>
-              <AuthButton $primary id="SignUpEnter" type="submit">
+
+              <AuthButton $primary type="submit">
                 {isSignUp ? "Зарегистрироваться" : "Войти"}
               </AuthButton>
               <S.TextGroep>

@@ -2,30 +2,31 @@ import { TaskContext } from "../../context/TaskContext";
 import Column from "../Column/Column";
 import * as S from "./Main.styled";
 import { useContext } from "react";
+import { statusTitles } from "../../const";
 
-const columnTitles = [
-  "Без статуса",
-  "Нужно сделать",
-  "В работе",
-  "Тестирование",
-  "Готово",
-];
 
 function Main() {
+  const { loading, tasks } = useContext(TaskContext);
 
-  const { error,loading,tasks } = useContext(TaskContext);
-
-  return ( loading ? <p>Идёт загрузка</p> :
+  return loading ? (
+    <S.SpinnerContainer>
+    <S.Spinner />
+    <S.LoadingText>Данные загружаются...</S.LoadingText>
+  </S.SpinnerContainer>
+  ) : (
     <S.Main>
       <S.Container>
         <S.MainBlock>
           <S.MainContent>
-            {columnTitles.map((item, index) => (
-              <Column key={index} title={item} tasks={tasks} />
-            ))}
+            {tasks && tasks.length > 0 ? (
+              statusTitles.map((item, index) => (
+                <Column key={index} title={item} tasks={tasks} />
+              ))
+            ) : (
+              <S.NoTasksText>Новых задач нет</S.NoTasksText>
+            )}
           </S.MainContent>
         </S.MainBlock>
-        <p>{error}</p>
       </S.Container>
     </S.Main>
   );

@@ -1,4 +1,3 @@
-// import { cardList } from "../../data";
 import Card from "../Card/Card";
 import * as S from "./Column.styled";
 

@@ -1,11 +1,11 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Placeholder = styled.input`
   &::placeholder {
     font-weight: 400;
     font-size: 14px;
     line-height: 1px;
-    color: #94A6BE;
+    color: #94a6be;
     letter-spacing: -0.14px;
   }
 
@@ -13,7 +13,7 @@ export const Placeholder = styled.input`
     font-weight: 400;
     font-size: 14px;
     line-height: 1px;
-    color: #94A6BE;
+    color: #94a6be;
     letter-spacing: -0.14px;
   }
 `;

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import { Button } from "../Button.styled";
 
 export const HeaderUserButton = styled.p`
   height: 20px;
@@ -9,8 +9,7 @@ export const HeaderUserButton = styled.p`
   justify-content: center;
   font-size: 14px;
   line-height: 20px;
-   color: #565eef;
-
+  color: #565eef;
 
   cursor: pointer;
 
@@ -35,4 +34,22 @@ export const HeaderUserButton = styled.p`
     margin: -6px 0 0 5px;
     padding: 0;
   }
+`;
+
+export const HeaderPopupNewCardButton = styled(Button)`
+ width: 178px;
+  margin-right: 20px;
+@media screen and (max-width: 495px) {
+  .header__btn-main-new {
+    z-index: 3;
+    position: fixed;
+    left: 16px;
+    bottom: 30px;
+    top: auto;
+    width: calc(100vw - 32px);
+    height: 40px;
+    border-radius: 4px;
+    margin-right: 0;
+  }
+
 `;

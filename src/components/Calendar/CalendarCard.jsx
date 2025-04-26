@@ -1,27 +1,31 @@
-import React, { useState } from 'react';
-import { DayPicker } from "react-day-picker";
-import "react-day-picker/style.css";
-import { Calendar } from './CalendarCard.styled';
-// import { Calendar } from './CalendarCard.styled';
+import React from "react";
+import { Calendar, SelectedData, CalendarPeriod,CalendarTitle } from "./CalendarCard.styled";
+import { format } from "date-fns";
+import { ru } from "date-fns/locale";
 
-const CalendarCard = () => {
- 
-  const [selected, setSelected] = useState(new Date());
-
+const CalendarCard = ({ selected, onSelectDate }) => {
   return (
     <div>
-    <Calendar
-      mode="single"
-      selected={selected}
-      onSelect={setSelected}
-    />
-    {selected && (
-      <p style={{ marginTop: "10px" }}>
-        Selected: {selected.toLocaleDateString()}
-      </p>
-    )}
-  </div>
+      <CalendarTitle>Даты</CalendarTitle>	
+      <Calendar
+        mode="single"
+        selected={selected}
+        onSelect={onSelectDate}
+        footer={
+          selected ? (
+            <CalendarPeriod>
+              Срок исполнения:
+              <SelectedData>
+                {format(selected, "dd.MM.yy", { locale: ru })}
+              </SelectedData>
+            </CalendarPeriod>
+          ) : (
+            <CalendarPeriod>Выберите срок исполнения</CalendarPeriod>
+          )
+        }
+      />
+    </div>
   );
 };
 
-export default CalendarCard ;
+export default CalendarCard;

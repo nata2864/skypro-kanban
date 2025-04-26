@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const PopUserSet = styled.div`
-   display: ${({ $isOpen }) => ($isOpen ? "block" : "none")};
+  display: ${({ $isOpen }) => ($isOpen ? "block" : "none")};
   position: absolute;
   top: 61px;
   right: 0;
@@ -34,7 +34,6 @@ export const UserMail = styled.p`
 `;
 
 export const ThemeBlock = styled.div`
- 
   display: flex;
   align-items: center;
   justify-content: space-between;

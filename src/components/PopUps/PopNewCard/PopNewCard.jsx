@@ -1,40 +1,109 @@
 import { Button } from "../../Button.styled";
-// import Calendar from "../../Calendar/Calendar";
 import Categories from "../../Categories/Categories";
-import PopNewCardForm from "../../PopNewCardForm/PopNewCardForm";
 import * as S from "./PopNewCard.styled";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { RoutesApp } from "../../../const";
+import { useCategoryValidation } from "../../../hooks/useCategoryValidation";
+import { useDateValidation } from "../../../hooks/useDateValidation";
+import { useFormValidation } from "../../../hooks/useFormValidation";
+import ModalForm from "../../ModalForm/ModalForm";
+import { useContext } from "react";
+import { TaskContext } from "../../../context/TaskContext";
 
-function PopNewCard({ onClose }) {
+function PopNewCard() {
+  const { addNewTask } = useContext(TaskContext);
+  const [selectedTopic, setSelectedTopic] = useState(null);
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [formData, setFormData] = useState({
+    title: "",
+    description: "",
+  });
+
+  const { categoryError, validateCategory } = useCategoryValidation();
+  const { dateError, validateDate } = useDateValidation();
+
+  const { formError, validateForm } = useFormValidation(formData, [
+    "title",
+    "description",
+  ]);
+
+  const handleSelectTopic = (topic) => {
+    setSelectedTopic(topic);
+  };
+
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const isFormValid = validateForm();
+    const isCategoryValid = validateCategory(selectedTopic);
+    const isDateValid = validateDate(selectedDate);
+
+    if (!isFormValid || !isCategoryValid || !isDateValid) {
+      return;
+    }
+
+    const newTask = {
+      ...formData,
+      date: selectedDate,
+      topic: selectedTopic,
+    };
+    try {
+      await addNewTask({ task: newTask });
+
+      navigate(RoutesApp.MAIN);
+    } catch (error) {
+      console.error("Ошибка при создании задачи", error);
+    }
+  };
+
   return (
     <S.PopNewCardWrapper>
       <S.PopNewCardContainer>
         <S.PopNewCardBlock>
-          <S.PopNewCardContent>
-            {/* <div className="pop-new-card__block">
-          <div className="pop-new-card__content"> */}
+          <S.PopNewCardContent as="form" onSubmit={handleSubmit}>
             <S.Title>Создание задачи</S.Title>
-            {/* Не срабатывает тк убрала стейт из Хидер */}
-            <S.CloseButton className="button_close" onClick={onClose}>
+
+            <S.CloseButton
+              onClick={() => {
+                navigate(RoutesApp.MAIN);
+              }}
+            >
               ✖
             </S.CloseButton>
-            <PopNewCardForm></PopNewCardForm>
 
-            {/* <div className="pop-new-card__categories categories">
-          <p className="categories__p subttl">Категория</p>
-          <div className="categories__themes">
-            <div className="categories__theme _orange _active-category">
-              <p className="_orange">Web Design</p>
-            </div>
-            <div className="categories__theme _green">
-              <p className="_green">Research</p>
-            </div>
-            <div className="categories__theme _purple">
-              <p className="_purple">Copywriting</p>
-            </div>
-          </div>
-        </div> */}
-            <Categories />
-            <Button $primary $float $size="newTask" id="btnCreate">
+            <ModalForm
+              handleChange={handleChange}
+              formData={formData}
+              error={formError}
+              showTaskInput={true}
+              selected={selectedDate}
+              onSelectDate={setSelectedDate}
+              dateError={dateError}
+            />
+
+            <Categories
+              selectedTopic={selectedTopic}
+              onSelectTopic={handleSelectTopic}
+              categoryError={categoryError}
+            />
+
+            <Button
+              type={"submit"}
+              $primary
+              $float
+              $size="newTask"
+              id="btnCreate"
+            >
               Создать задачу
             </Button>
           </S.PopNewCardContent>

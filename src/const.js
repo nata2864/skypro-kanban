@@ -8,16 +8,16 @@ export const RoutesApp = {
   EXIT: "/exit",
 };
 
-export const buttonSizes = {
-  user: "72px",
-  exit: "153px",
-  new: "178px",
-  newTask: "132px",
-};
+export const statusTitles = [
+  "Без статуса",
+  "Нужно сделать",
+  "В работе",
+  "Тестирование",
+  "Готово",
+];
 
-export const buttonMargins = {
-  exit: "10px",
-  new: "20px",
+export const buttonSizes = {
+  newTask: "132px",
 };
 
 export const categorieColor = {
@@ -44,13 +44,27 @@ export const categories = ["Web Design", "Research", "Copywriting"];
 export const colorPageTheme = {
   light: "#EAEEF6",
   dark: "#EAEEF6",
-  // grey: "#EAEEF6",
 };
 
 export const theme = {
   light: "#EAEEF6",
   dark: "#EAEEF6",
-  // grey: "#EAEEF6",
+};
+
+export const textValidationErrors = {
+  signUpError:
+    "Введенные вами данные не корректны. Чтобы завершить регистрацию, заполните все поля в форме",
+  signInError:
+    "Введенные вами данные не распознаны. Проверьте свой логин и пароль и повторите попытку входа",
+  categoryError: "Пожалуйста, выберите категорию",
+  dateError: "Пожалуйста, выберите дату",
+  formError: "Пожалуйста, заполните все обязательные поля",
+  statusError: "Пожалуйста, выберите статус",
+  addNewTaskError: "Ошибка добавления задачи",
+  updateTaskError: "Ошибка редактирования задачи",
+  deleteTaskError: "Ошибка удаления задачи",
+  getTasksError: "Ошибка при загрузке задач",
+  addNewTask: "Ошибка при обновлении задачи",
 };
 
 export const lightTheme = {
@@ -60,9 +74,6 @@ export const lightTheme = {
   modalOverlay: "rgba(0, 0, 0, 0.4)",
   modalBackground: "#FFFFFF",
   modalBorder: "#D4DBE5",
-  // buttonText: '#565EEF',
-  // buttonBorder: '#565EEF',
-  // buttonLink: '#565EEF',
 
   header: {
     background: "#FFFFFF",
@@ -103,9 +114,6 @@ export const darkTheme = {
   modalOverlay: "rgba(0, 0, 0, 0.8)",
   modalBackground: "#20202C",
   modalBorder: "#4E5566",
-  // buttonText: '#FFFFFF',
-  // buttonBorder: '#FFFFFF',
-  // buttonLink: '#FFFFFF',
 
   header: {
     background: "#20202C",
