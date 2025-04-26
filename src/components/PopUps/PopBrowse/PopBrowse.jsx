@@ -14,11 +14,12 @@ import StatusBlock from "../../StatusBlock/StatusBlock";
 import { useNavigate } from "react-router-dom";
 import { RoutesApp } from "../../../const";
 import useStatusValidation from "../../../hooks/useStatusValidation ";
+import { useEffect } from "react";
 
 function PopBrowse() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { tasks, deleteTaskById,updateTask } = useContext(TaskContext);
+  const { tasks, deleteTaskById, updateTask } = useContext(TaskContext);
   const selectedTask = tasks.find((task) => task._id === id);
   const { dateError, validateDate } = useDateValidation();
 
@@ -35,8 +36,23 @@ function PopBrowse() {
 
   const { statusError, validateStatus } = useStatusValidation();
 
+  useEffect(() => {
+    if (selectedTask) {
+      setFormData({ description: selectedTask.description || "" });
+      setSelectedStatus(selectedTask.status || null);
+      setSelectedDate(selectedTask.date || null);
+    }
+  }, [selectedTask]);
+
   const handleSelectStatus = (status) => {
     setSelectedStatus(status);
+  };
+
+  const handleCancelEdit = () => {
+    setIsEditMode(false);
+    setFormData({ description: selectedTask.description || "" });
+    setSelectedStatus(selectedTask.status || null);
+    setSelectedDate(selectedTask.date || null);
   };
 
   const handleChange = (e) => {
@@ -46,6 +62,7 @@ function PopBrowse() {
       [name]: value,
     });
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -60,14 +77,13 @@ function PopBrowse() {
       ...formData,
       title: selectedTask.title,
       topic: selectedTask.topic,
-  
+
       date: selectedDate,
       status: selectedStatus,
     };
 
-    console.log(newTask)
     try {
-      await updateTask ({ task: newTask, id: selectedTask._id});
+      await updateTask({ task: newTask, id: selectedTask._id });
 
       navigate(RoutesApp.MAIN);
     } catch (error) {
@@ -123,7 +139,8 @@ function PopBrowse() {
               isEditMode={isEditMode}
               handelDelete={handelDelete}
               onSubmit={handleSubmit}
-              onCancel={handelEdit}
+              onEdit={handelEdit}
+              onCancel={handleCancelEdit}
             />
           </S.PopBrowseContent>
         </S.PopBrowseBlock>

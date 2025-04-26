@@ -2,7 +2,7 @@ import * as S from "./ActionButtons.styled";
 import { useNavigate } from "react-router-dom";
 import { RoutesApp } from "../../const";
 
-function ActionButtons({isEditMode, handelDelete, onSubmit, onCancel}) {
+function ActionButtons({isEditMode, handelDelete, onSubmit, onCancel,onEdit}) {
 
       const navigate = useNavigate();
     return (
@@ -14,7 +14,7 @@ function ActionButtons({isEditMode, handelDelete, onSubmit, onCancel}) {
       <S.PopBrowseButton type="onSubmit" onClick={onSubmit}>
         Сохранить
       </S.PopBrowseButton>
-      <S.PopBrowseButton type="button" >
+      <S.PopBrowseButton type="button" onClick={onCancel} >
         Отменить
       </S.PopBrowseButton>
       <S.PopBrowseButton type="button" onClick={handelDelete}>
@@ -23,7 +23,7 @@ function ActionButtons({isEditMode, handelDelete, onSubmit, onCancel}) {
     </>
   ) : (
     <>
-      <S.PopBrowseButton type="button" onClick={onCancel}>
+      <S.PopBrowseButton type="button" onClick={onEdit}>
         Редактировать задачу
       </S.PopBrowseButton>
       <S.PopBrowseButton type="button" onClick={handelDelete}>

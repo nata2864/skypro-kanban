@@ -3,12 +3,14 @@ import { fetchTasks, postTask, editTask, deleteTask } from "../services/api";
 import { TaskContext } from "./TaskContext";
 import { textValidationErrors } from "../const";
 import { toast } from "react-toastify";
+import { useContext } from "react";
+import { AuthContext } from "./AuthContext";
 
 function TaskProvider({ children }) {
   const [loading, setLoading] = useState(true);
   const [tasks, setTasks] = useState([]);
 
-  // const { user } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
     setTimeout(() => {
@@ -16,8 +18,7 @@ function TaskProvider({ children }) {
     }, 3000);
   });
 
-  const token = "bgc0b8awbwas6g5g5k5o5s5w606g37w3cc3bo3b83k39s3co3c83c03ck";
-  //  const token = user.token;
+  const token = user.token;
 
   const getTasks = useCallback(async () => {
     try {
