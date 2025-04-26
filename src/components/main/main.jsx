@@ -4,11 +4,15 @@ import * as S from "./Main.styled";
 import { useContext } from "react";
 import { statusTitles } from "../../const";
 
+
 function Main() {
   const { loading, tasks } = useContext(TaskContext);
 
   return loading ? (
-    <p>Идёт загрузка</p>
+    <S.SpinnerContainer>
+    <S.Spinner />
+    <S.LoadingText>Данные загружаются...</S.LoadingText>
+  </S.SpinnerContainer>
   ) : (
     <S.Main>
       <S.Container>
