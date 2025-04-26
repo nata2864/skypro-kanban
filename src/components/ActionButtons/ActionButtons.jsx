@@ -14,7 +14,7 @@ function ActionButtons({isEditMode, handelDelete, onSubmit, onCancel}) {
       <S.PopBrowseButton type="onSubmit" onClick={onSubmit}>
         Сохранить
       </S.PopBrowseButton>
-      <S.PopBrowseButton type="button" onClick={onCancel}>
+      <S.PopBrowseButton type="button" >
         Отменить
       </S.PopBrowseButton>
       <S.PopBrowseButton type="button" onClick={handelDelete}>

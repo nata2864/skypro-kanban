@@ -1,13 +1,11 @@
 import styled from "styled-components";
 
-
 export const PopNewCardWrapper = styled.div`
-;
   width: 100%;
   min-width: 375px;
   height: 100%;
   min-height: 100vh;
-  position:fixed;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 6;
@@ -83,7 +81,7 @@ export const FormWrapper = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-    @media screen and (max-width: 660px){
-     display: block;
-    }
+  @media screen and (max-width: 660px) {
+    display: block;
+  }
 `;

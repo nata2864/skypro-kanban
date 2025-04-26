@@ -18,7 +18,7 @@ import useStatusValidation from "../../../hooks/useStatusValidation ";
 function PopBrowse() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { tasks, deleteTaskById } = useContext(TaskContext);
+  const { tasks, deleteTaskById,updateTask } = useContext(TaskContext);
   const selectedTask = tasks.find((task) => task._id === id);
   const { dateError, validateDate } = useDateValidation();
 
@@ -56,8 +56,23 @@ function PopBrowse() {
     if (!isFormValid || !isDateValid || !isStatusValid) {
       return;
     }
+    const newTask = {
+      ...formData,
+      title: selectedTask.title,
+      topic: selectedTask.topic,
+  
+      date: selectedDate,
+      status: selectedStatus,
+    };
 
-    console.log("Valid");
+    console.log(newTask)
+    try {
+      await updateTask ({ task: newTask, id: selectedTask._id});
+
+      navigate(RoutesApp.MAIN);
+    } catch (error) {
+      console.error("Ошибка при редактировании задачи", error);
+    }
   };
 
   const handelEdit = () => {

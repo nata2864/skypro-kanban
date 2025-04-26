@@ -1,8 +1,5 @@
 import { Button } from "../../Button.styled";
-import CalendarCard from "../../Calendar/CalendarCard";
-// import Calendar from "../../Calendar/Calendar";
 import Categories from "../../Categories/Categories";
-// import PopNewCardForm from "../../PopNewCardForm/PopNewCardForm";
 import * as S from "./PopNewCard.styled";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -10,7 +7,6 @@ import { RoutesApp } from "../../../const";
 import { useCategoryValidation } from "../../../hooks/useCategoryValidation";
 import { useDateValidation } from "../../../hooks/useDateValidation";
 import { useFormValidation } from "../../../hooks/useFormValidation";
-import TaskForm from "../../TaskForm/TaskForm";
 import ModalForm from "../../ModalForm/ModalForm";
 import { useContext } from "react";
 import { TaskContext } from "../../../context/TaskContext";
