@@ -12,12 +12,15 @@ import { useDateValidation } from "../../../hooks/useDateValidation";
 import { useFormValidation } from "../../../hooks/useFormValidation";
 import TaskForm from "../../TaskForm/TaskForm";
 import ModalForm from "../../ModalForm/ModalForm";
+import { useContext } from "react";
+import { TaskContext } from "../../../context/TaskContext";
 
 function PopNewCard() {
+  const { addNewTask } = useContext(TaskContext);
   const [selectedTopic, setSelectedTopic] = useState(null);
   const [selectedDate, setSelectedDate] = useState(null);
   const [formData, setFormData] = useState({
-    task: "",
+    title: "",
     description: "",
   });
 
@@ -25,7 +28,7 @@ function PopNewCard() {
   const { dateError, validateDate } = useDateValidation();
 
   const { formError, validateForm } = useFormValidation(formData, [
-    "task",
+    "title",
     "description",
   ]);
 
@@ -53,7 +56,18 @@ function PopNewCard() {
       return;
     }
 
-    console.log("Valid");
+    const newTask = {
+      ...formData,
+      date: selectedDate,
+      topic: selectedTopic,
+    };
+    try {
+      await addNewTask({ task: newTask });
+
+      navigate(RoutesApp.MAIN);
+    } catch (error) {
+      console.error("Ошибка при создании задачи", error);
+    }
   };
 
   return (
@@ -84,14 +98,13 @@ function PopNewCard() {
               />
             </S.FormWrapper> */}
             <ModalForm
-             handleChange={handleChange}
-             formData={formData}
-             error={formError}
-             showTaskInput = {true}
-             selected={selectedDate}
-             onSelectDate={setSelectedDate}
-             dateError={dateError}
-            
+              handleChange={handleChange}
+              formData={formData}
+              error={formError}
+              showTaskInput={true}
+              selected={selectedDate}
+              onSelectDate={setSelectedDate}
+              dateError={dateError}
             />
 
             <Categories

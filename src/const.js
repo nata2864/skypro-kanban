@@ -47,31 +47,28 @@ export const categories = ["Web Design", "Research", "Copywriting"];
 export const colorPageTheme = {
   light: "#EAEEF6",
   dark: "#EAEEF6",
-  // grey: "#EAEEF6",
 };
 
 export const theme = {
   light: "#EAEEF6",
   dark: "#EAEEF6",
-  // grey: "#EAEEF6",
 };
 
-
-export const textValidationErrors ={
-signUpError:"Введенные вами данные не корректны. Чтобы завершить регистрацию, заполните все поля в форме",
-signInError:"Введенные вами данные не распознаны. Проверьте свой логин и пароль и повторите попытку входа",
-categoryError:"Пожалуйста, выберите категорию",
-dateError:"Пожалуйста, выберите дату",
-formError:"Пожалуйста, заполните все обязательные поля",
-statusError:"Пожалуйста, выберите статус",
-addNewTaskError: "Ошибка добавления задачи",
-updateTaskError: "Ошибка редактирования задачи",
-deleteTaskError: "Ошибка удаления задачи",
-getTasksError:"Ошибка при загрузке задач",
-addNewTask:"Ошибка при обновлении задачи",
-}
-
-
+export const textValidationErrors = {
+  signUpError:
+    "Введенные вами данные не корректны. Чтобы завершить регистрацию, заполните все поля в форме",
+  signInError:
+    "Введенные вами данные не распознаны. Проверьте свой логин и пароль и повторите попытку входа",
+  categoryError: "Пожалуйста, выберите категорию",
+  dateError: "Пожалуйста, выберите дату",
+  formError: "Пожалуйста, заполните все обязательные поля",
+  statusError: "Пожалуйста, выберите статус",
+  addNewTaskError: "Ошибка добавления задачи",
+  updateTaskError: "Ошибка редактирования задачи",
+  deleteTaskError: "Ошибка удаления задачи",
+  getTasksError: "Ошибка при загрузке задач",
+  addNewTask: "Ошибка при обновлении задачи",
+};
 
 export const lightTheme = {
   body: "#F1F1F1",

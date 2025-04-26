@@ -13,7 +13,7 @@ import ActionButtons from "../../ActionButtons/ActionButtons";
 import StatusBlock from "../../StatusBlock/StatusBlock";
 import { useNavigate } from "react-router-dom";
 import { RoutesApp } from "../../../const";
-import useStatusValidation from "../../../hooks/useStatusValidation "
+import useStatusValidation from "../../../hooks/useStatusValidation ";
 
 function PopBrowse() {
   const { id } = useParams();
@@ -29,15 +29,11 @@ function PopBrowse() {
   });
   const [isEditMode, setIsEditMode] = useState(false);
 
-
   const { formError, validateForm } = useFormValidation(formData, [
     "description",
   ]);
 
   const { statusError, validateStatus } = useStatusValidation();
- 
-
-
 
   const handleSelectStatus = (status) => {
     setSelectedStatus(status);
@@ -103,7 +99,6 @@ function PopBrowse() {
               handleChange={handleChange}
               formData={formData}
               error={formError}
-              //  showTaskInput = {true}
               selected={selectedDate}
               onSelectDate={setSelectedDate}
               dateError={dateError}

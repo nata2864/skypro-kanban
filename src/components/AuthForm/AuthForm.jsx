@@ -79,7 +79,7 @@ function AuthForm({ isSignUp }) {
             <div>
               <S.Title>{isSignUp ? "Регистрация" : "Вход"}</S.Title>
             </div>
-            <S.Form id="formLogUp" onSubmit={handleSubmit}>
+            <S.Form onSubmit={handleSubmit}>
               {isSignUp && (
                 <S.Input
                   $error={errors.name}
@@ -110,8 +110,8 @@ function AuthForm({ isSignUp }) {
                 value={formData.password}
                 onChange={handleChange}
               />
-              {/* <S.ErrorText>{error}</S.ErrorText> */}
-              <AuthButton $primary id="SignUpEnter" type="submit">
+           
+              <AuthButton $primary  type="submit">
                 {isSignUp ? "Зарегистрироваться" : "Войти"}
               </AuthButton>
               <S.TextGroep>

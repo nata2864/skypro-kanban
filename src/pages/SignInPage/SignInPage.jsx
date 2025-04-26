@@ -1,7 +1,7 @@
 import SignIn from "../../components/SignIn";
 
 function SignInPage() {
-  return <SignIn isSignUp={false} />;
+  return <SignIn  />;
 }
 
 export default SignInPage;

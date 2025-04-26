@@ -4,7 +4,7 @@ import {Placeholder} from "../PlaceHolder.styled"
 
 
 
-export const Form = styled.form`
+export const Form = styled.div`
   max-width: 370px;
   width: 100%;
   display: block;

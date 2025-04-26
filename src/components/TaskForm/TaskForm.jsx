@@ -7,8 +7,8 @@ function TaskForm({ handleChange, formData, showTaskInput}) {
         <S.FormBlock>
           <S.FormLabel htmlFor="formTitle">Название задачи</S.FormLabel>
           <S.Input
-            name="task"
-            value={formData.task}
+            name="title"
+            value={formData.title}
             onChange={handleChange}
             type="text"
             id="formTitle"

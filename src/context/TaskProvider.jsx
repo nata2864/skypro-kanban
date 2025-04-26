@@ -1,6 +1,4 @@
 import { useState, useEffect, useCallback } from "react";
-// import { useContext } from "react";
-// import { AuthContext } from "./AuthContext";
 import { fetchTasks, postTask, editTask, deleteTask } from "../services/api";
 import { TaskContext } from "./TaskContext";
 import { textValidationErrors } from "../const";
@@ -42,7 +40,6 @@ function TaskProvider({ children }) {
   }, [getTasks]);
 
   const addNewTask = async ({ task }) => {
- 
     try {
       const newTasks = await postTask({ token: token, task });
       setTasks(newTasks);
@@ -76,7 +73,6 @@ function TaskProvider({ children }) {
     <TaskContext.Provider
       value={{
         loading,
-
         tasks,
         addNewTask,
         updateTask,

@@ -4,11 +4,8 @@ import {
   CategoriePopUpButtonText,
 } from "../CategorieButton/CategorieButton.styled";
 
-
 function Categories({ selectedTopic, onSelectTopic }) {
   const categories = ["Web Design", "Research", "Copywriting"];
-
-  console.log("selectedTopic:", selectedTopic);
 
   return (
     <S.Categories>
@@ -26,8 +23,6 @@ function Categories({ selectedTopic, onSelectTopic }) {
             </CategoriePopUpButtonText>
           </CategoriePopUpButton>
         ))}
-          {/* {categoryError && <PopUpErrorText>Пожалуйста, выберите категорию</PopUpErrorText>} */}
-         
       </S.CategoriesThemes>
     </S.Categories>
   );
