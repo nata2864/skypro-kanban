@@ -1,14 +1,9 @@
 import styled from "styled-components";
-import { Button } from "../../Button.styled";
-
 import {
   PopNewCardWrapper,
   PopNewCardContainer,
   PopNewCardBlock,
-
 } from "../PopNewCard/PopNewCard.styled";
-
-// import { categorieColor } from "../../../const";
 
 export const PopBrowseWrapper = styled(PopNewCardWrapper)`
   z-index: 7;
@@ -33,8 +28,6 @@ export const PopBrowseTitle = styled.h3`
   font-weight: 600;
   line-height: 24px;
 `;
-
-
 
 export const PopBrowseStatus = styled.div`
   margin-bottom: 11px;
@@ -75,5 +68,3 @@ export const PopBrowseStatusTitle = styled.p`
 //   line-height: 1;
 //   letter-spacing: -0.14px;
 // `;
-
-
